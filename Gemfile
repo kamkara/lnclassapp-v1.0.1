@@ -24,6 +24,16 @@ gem 'jbuilder', '~> 2.7'
 
 ################  Styles ###############
 #gem 'tailwindcss-rails', '~> 0.3.3'
+gem 'bootstrap', '~> 5.0.0'
+
+
+################  Forms ###############
+gem 'bootstrap_form', '~> 4.5'
+
+
+################  Js ###############
+gem 'jquery-rails'
+
 
 
 
