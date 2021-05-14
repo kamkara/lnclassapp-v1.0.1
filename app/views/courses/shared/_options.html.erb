@@ -1,0 +1,15 @@
+<!-- edit option-->
+
+<% if current_user.id == @course.user_id %>
+  <div class="d-flex justify-content-end">
+    <%= link_to  @course, method: :delete, data: { confirm: 'voulez-vous vraiment supprimé?' } do %>
+      <i class="fas fa-trash"></i> Supprimé
+    <% end %>
+    <span class="mx-2">
+        <%= link_to  edit_course_path(@course) do %>
+        <i class="fas fa-chalkboard-teacher"></i> Editer
+        <% end %>
+    </span>
+  </div>
+<% end %>
+

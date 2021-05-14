@@ -1,34 +1,38 @@
-<p id="notice"><%= notice %></p>
+<% content_for @title = @course.title %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @course.title %>
-</p>
+<div class="container-sm pt-24">
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-6">
 
-<p>
-  <strong>Content:</strong>
-  <%= @course.content %>
-</p>
+      
+      <div class="card">
+        <!-- title!-->
+        <h1 class="text-xl leading-tight font-bold mt-2 mx-2">
+          <%= @course.title %>
+        </h1>
 
-<p>
-  <strong>Slug:</strong>
-  <%= @course.slug %>
-</p>
+         <!-- avatar data/!-->
+        <div class="flex items-cente mt-4 ml-6">
+         
+          <!-- Course meta data-->
+          <%= render "courses/shared/user_card_course" %>
+        </div>
 
-<p>
-  <strong>Level:</strong>
-  <%= @course.level_id %>
-</p>
+        <!--content/!-->
+        <div class="m-2">
+          <p class="mx-2" id="read_more">
+            <%= @course.content.to_s.html_safe %>
+          </p>
+          <hr>
+          <!-- Options-->
+          <%= render "courses/shared/options" %>
+        </div>
+      </div>
+    </div>
+    <!-- Exercices-->
+    <div class="col-12 col-md-6 col-lg-6">
+            
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Material:</strong>
-  <%= @course.material_id %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @course.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>

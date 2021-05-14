@@ -1,6 +1,12 @@
-<h1>Editing Course</h1>
+<%= content_for @title="Modifier le contenu" %>
 
-<%= render 'form', course: @course %>
-
-<%= link_to 'Show', @course %> |
-<%= link_to 'Back', courses_path %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-7 col-lg-7 mx-auto mt-24">
+        <h2 class="text-center mb-4 font-bold text-3xl">Modifier le contenu :</h2>
+        <div class="mx-auto">
+            <%= render 'form', course: @course %>
+        </div>
+    </div>
+  </div>
+</div>

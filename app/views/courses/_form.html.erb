@@ -1,4 +1,4 @@
-<%= form_with(model: course) do |form| %>
+<%= form_with(model: course) do |f| %>
   <% if course.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
@@ -11,37 +11,44 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <div class="field">
+    <%= f.text_field :title, label: 'Titre:', class: "form-control", placeholder:"Le titre du resumé ..." %>
   </div>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
+  <div class="field my-1">
+    <%= f.rich_text_area :content, class: "form-control customized-min-height",
+     placeholder: "Saissir le contenu ..." %>
+     <small class="small mt-2">Professeur, vous pouvez aller à l'essentiel, pour faciliter la comprehension des élèves."</small>
   </div>
 
-  <div class="field">
-    <%= form.label :slug %>
-    <%= form.text_field :slug %>
-  </div>
+    <div class="row my-2">
+      <div class="col-5  col-md-3 col-lg-3">
+        <div class="input-form">
+          <span class="select">
+            <%= f.select :material_id,
+              @materials.map { |m| [m.title, m.id] },
+              placeholder:"la matiere",
+               hide_label: true, class:"bg-red-200" %>
 
-  <div class="field">
-    <%= form.label :level_id %>
-    <%= form.text_field :level_id %>
-  </div>
+          </span>
+        </div>
+      </div>
+      <div class="col-5 col-md-3 col-lg-3">
+        <div class="input-form">
+          <span class="select">
+            <%= f.select :level_id,
+              @levels.map { |l| [l.title, l.id] },
+              placeholder:"Niveau",
+               hide_label: true %>
+          </span>
+        </div>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :material_id %>
-    <%= form.text_field :material_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="form-actions">
+      <%= f.submit "Créer le resumé",  class: "inline-flex justify-center py-2 px-4 border border-transparent 
+        shadow-sm text-sm font-medium rounded-md text-white bg-blue-600
+        hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2
+        focus:ring-blue-500" %>
+    </div>
 <% end %>
