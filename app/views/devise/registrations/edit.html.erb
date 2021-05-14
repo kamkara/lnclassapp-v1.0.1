@@ -1,43 +1,150 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="container mt-16">
+ <h2>Votre Profil</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <!--  user custom data-->
+  <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2">
+  <!-- Username-->
+  <div class="-mx-3 md:flex">
+    <p class="text-red text-xs italic">Informations personnelle.</p>
+    <!-- last name-->
+    <div class="md:w-1/2 px-3 mb-2 md:mb-0">
+      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
+        Nom:
+      </label>
+      <%= f.text_field :first_name, class:"appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3", hide_label:true %>
+    </div>
+    <!-- last name-->
+    <div class="md:w-1/2 px-3 mb-2 md:mb-0">
+      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
+        Prénom:
+      </label>
+     <%= f.text_field :last_name, class:"appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3", hide_label:true %>
+    </div>
+  </div>
+  <!--  FULL NAME-->
+  <div class="px-3 mb-3 md:mb-0">
+    <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
+      Nom Complet:
+    </label>
+    <%= f.text_field :full_name, class:"appearance-none block w-full bg-grey-lighter text-grey-darker border border-red 
+    rounded py-3 px-4 mb-3", hide_label:true %>
   </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+  <hr class:"mb-3">
+<div class="md:flex -mx-3">
+  <div class="md:w-1/3 px-3 mb-2 md:mb-0">
+    <!-- phone contact-->
+    <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
+      Numéro téléphone:
+    </label>
+    <%= f.phone_field :phone_contact, class:"appearance-none block w-full bg-grey-lighter text-grey-darker border border-red 
+      rounded py-3 px-4 mb-3", hide_label:true, id:"studentContact"%>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
   </div>
+  <div class="md:w-1/3 px-3 mb-2 md:mb-0">
+    <!-- whatsapp contact-->
+    <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
+      Numéro WhatsApp:
+    </label>
+    <%= f.phone_field :whatsapp_contact, class:"appearance-none block w-full bg-grey-lighter text-grey-darker border border-red 
+      rounded py-3 px-4 mb-3", hide_label:true, id:"studentContact"%>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
+  <div class="md:w-1/3 px-3 mb-2 md:mb-0">
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+      <% if current_user.role == "student" %>
+      <!-- Matricule-->
+    <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
+      Numéro Matricule:
+    </label>
+    <%= f.text_field :matricule, hide_label: true, class:"appearance-none block w-full bg-grey-lighter text-grey-darker border border-red 
+      rounded py-3 px-4 mb-3", placeholder:"N° Matricule :", id:"studentMatricule" %>
+        
+      <% end %>
   </div>
+</div>  
+    
+  <hr class:"mb-3">
+  <!-- school data-->
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-1/3 px-3 mb-2 md:mb-0">
+      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
+        Ville:
+      </label>
+      <%= f.select :city, User::CITY_NAME, hide_label: true,label_class:"font-semibold",
+          wrapper: {class:"w-1/3 border border-gray-200 focus:outline-none focus:border-gray-500"} %>
+    </div>
+    <div class="md:w-1/3 px-3 mb-2 md:mb-0">
+      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
+        Etablissement:
+      </label>
+      <%= f.select :school_name, User::SCHOOL_NAME, hie_label: true, label_class:"font-semibold",
+          wrapper: { class: "w-1/3 border border-gray-200 focus:outline-none focus:border-gray-300"} %>      
+      
+    </div>
+    <div class="md:w-1/3 px-3 mb-2 md:mb-0">
+      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
+        Niveau:
+      </label>
+      
+      <% if current_user.role == "student" %>
+        
+        <%= f.select :level_id, @levels.map { |l| [l.title, l.id] }, hide_label: true, label_class:"font-semibold",
+            wrapper: {class:"w-1/3 border border-gray-200 focus:outline-none focus:border-gray-300"} %>
+          
+      <% elsif  current_user.role == " teacher" %>
+        
+        <%= f.select :material_id, @materials.map { |m| [m.title, m.id] }, hide_label: true, label_class:"font-semibold",
+            wrapper: {class:"w-1/3 border border-gray-200 focus:outline-none focus:border-gray-300"} %>        
+      <% end %>
+      </div>
+    
+  </div>
+  <hr class:"mb-3">
+<div class="md:flex -mx-3">
+  <div class="md:w-1/3 px-3 mb-2 md:mb-0">
+    <!-- Mot de passe Actuelt-->
+    <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
+      Mot de passe Actuel:
+    </label>
+    <%= f.password_field :current_password, autocomplete: "current-password", class:"appearance-none block w-full bg-grey-lighter text-grey-darker border border-red 
+      rounded py-3 px-4 mb-3", hide_label:true %>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
   </div>
+  <div class="md:w-1/3 px-3 mb-2 md:mb-0">
+    <!-- Nouveau mot de passe-->
+    <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
+      Nouveau mot de passe:
+    </label>
+    <%= f.password_field :password, autocomplete: "new-password", class:"appearance-none block w-full bg-grey-lighter text-grey-darker border border-red 
+      rounded py-3 px-4 mb-3", hide_label:true, id:"studentContact", placeholder:"Changer votre mot de passe. "%>
+
+  </div>
+  <div class="md:w-1/3 px-3 mb-2 md:mb-0">
+    <!-- Confirmation du nouveau mot de passe-->
+    <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
+      Confirmé nouveau mot de passe:
+    </label>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"appearance-none block w-full bg-grey-lighter text-grey-darker border border-red 
+      rounded py-3 px-4 mb-3", placeholder:" COnfirmé votre nouveau mot de passe." %>
+        
+  </div>
+</div>  
+
+  <div class=" md:flex actions">
+    <div class="md:w-1/2">
+      <%= f.submit "Enregistré" , class:"mr-5 bg-blue-700 text-white border border-blue-700 font-bold py-2 px-6 rounded-lg" %>
+    </div>
+    <div class="md:w-1/2">
+
+  <h3>Supprimé votre compte</h3>
+      <%= button_to "Supprimé", registration_path(resource_name), data: { confirm: "Are you sure?" },
+         method: :delete,class:"mr-5 bg-red-700 text-white border border-blue-700 font-bold py-2 px-6 rounded-lg" %>
+    </div>
+    
 <% end %>
+</div>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>

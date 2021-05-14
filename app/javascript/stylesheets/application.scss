@@ -1,3 +1,8 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+@import "./actiontext.scss";
+@import "trix/dist/trix";
+@import "./sign_up.scss";
+@import "./navbar.scss";

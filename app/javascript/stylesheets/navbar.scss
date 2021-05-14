@@ -1,0 +1,33 @@
+.logo {
+    font-weight: 700;
+    color: #fff;
+    font-size: 19px;
+    letter-spacing: 1px;
+}
+
+.logo:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+.m-links {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    margin: 0 10px;
+    padding: 0;
+    transition: all 0.3s ease-in-out;
+    border-bottom: 2px solid transparent;
+}
+
+.m-links i {
+    margin-right: 5px;
+}
+
+.m-links:hover {
+    padding-bottom: 3px;
+    text-decoration: none;
+    color: #fff;
+    border-color: #fff;
+    /* for underbar*/
+}

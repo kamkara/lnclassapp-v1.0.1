@@ -16,7 +16,7 @@
 		</button>
 	</div>
 
-	<div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
+	<div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0 " id="nav-content">
 		<ul class="list-reset lg:flex justify-end flex-1 items-center">
             <li class="mr-3">
                 <%= link_to root_path, 
@@ -25,7 +25,7 @@
                 <% end %>
             </li>
             <li class="mr-3">
-                <%= link_to profile_index_path(@user), 
+                <%= link_to profil_index_path(@user), 
                 class: "inline-block text-gray-600 no-underline hover:text-gray-200 
                 hover:text-underline py-2 px-4 active m-links nav-link capitalize text-white" do %>
                     <i class="fas fa-user-circle"></i> <%= current_user.full_name %>
@@ -62,5 +62,5 @@
 		</ul>
 	</div>
 </nav>
-
+<div class="mb-24"></div>
 <% end %>
