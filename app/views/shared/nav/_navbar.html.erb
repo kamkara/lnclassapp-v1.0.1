@@ -1,0 +1,66 @@
+<!--HEADER/!-->
+<!-- no header render on the home page/!-->
+<% if user_signed_in? %>
+
+<nav class="flex items-center justify-between flex-wrap bg-blue-500 py-3 md:py-0 fixed w-full z-10 top-0">
+    <!-- brand name-->
+	<div class="flex items-center flex-shrink-0 text-white mr-6">
+        <%= link_to  root_path , class:"text-white no-underline hover:text-white hover:no-underline" do %>
+            <span class="text-2xl pl-2 font-bold"><i class="em em-grinning"></i> LNCLASS</span>
+        <% end %>
+	</div>
+    <!-- menu-->
+	<div class="block lg:hidden">
+		<button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-white hover:border-white">
+			<svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+		</button>
+	</div>
+
+	<div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
+		<ul class="list-reset lg:flex justify-end flex-1 items-center">
+            <li class="mr-3">
+                <%= link_to root_path, 
+                class: "m-links nav-link mr-3 active inline-block py-2 px-4 text-white no-underline" do %>
+                    <i class="fa fa-home"></i> Acceuil
+                <% end %>
+            </li>
+            <li class="mr-3">
+                <%= link_to profile_index_path(@user), 
+                class: "inline-block text-gray-600 no-underline hover:text-gray-200 
+                hover:text-underline py-2 px-4 active m-links nav-link capitalize text-white" do %>
+                    <i class="fas fa-user-circle"></i> <%= current_user.full_name %>
+                <% end %>
+            </li>
+
+            <!-- create course by teacher/!-->        
+            <% if current_user.role == "teacher" %>
+                <li class="mr-3 nav-item nav-item_feed active">
+                    <%= link_to dashboard_index_path, 
+                    class: "inline-block text-gray-600 no-underline hover:text-gray-200 
+                    hover:text-underline py-2 px-4 m-links nav-link active text-white " do %>
+                        <i class="fas fa-users"></i> TablesClass
+                    <% end %>
+                </li>
+            <% elsif current_user.role == "team" %>
+                <li class="mr-3 nav-item nav-item_feed active">
+                    <%= link_to dashboard_index_path, 
+                    class: "inline-block text-gray-600 no-underline hover:text-gray-200
+                     hover:text-underline py-2 px-4 m-links nav-link active text-white " do %>
+                        <i class="fas fa-users"></i> Admistration
+                    <% end %>
+                </li>
+            <% end %>
+                    
+            <!-- Sign out /!-->
+            <li class="mr-3 nav-item nav-item_feed">
+                <%= link_to destroy_user_session_path, method: :delete,
+                 class: "inline-block text-gray-600 no-underline hover:text-gray-200
+                 hover:text-underline py-2 px-4 m-links nav-link active text-white " do %>
+                    <i class="fa fa-power-off" aria-hidden="true"></i> Déconnexion
+                <% end %>
+            </li>
+		</ul>
+	</div>
+</nav>
+
+<% end %>

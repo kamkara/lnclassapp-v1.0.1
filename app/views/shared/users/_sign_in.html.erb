@@ -1,0 +1,55 @@
+
+
+
+<!-- component -->
+<div class="h-screen bg-gray-200 flex flex-col space-y-10 justify-center items-center">
+  <div class="bg-white w-96 shadow-xl rounded p-5">
+    <h1 class="text-3xl font-medium items-center">Lnclass</h1>
+    <p class="text-sm">Connectez-vous à la plateforme</p>
+    
+  
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div  class="space-y-5 mt-5">
+      <!-- login-->
+      <%= f.text_field :login, class:"w-full h-12 border border-gray-800 rounded px-3", placeholder:"Email ou N° téléphone", hide_label: true %>
+      
+      <!-- Pwd-->
+      <div class="w-full flex items-center border border-gray-800 rounded px-3">
+        <%= f.password_field :password, class:"w-4/5 h-12", placeholder:"Mot de passe" %>
+        <span class="text-blue-700 hover:bg-blue-400 rounded-md px-3">Voir</span>
+      </div>
+      <!-- Pwd forget -->
+      <div class="">
+        <a href="#!" class="font-medium text-blue-400 hover:bg-blue-300 rounded-md p-2">Mot de passe oublié?</a>
+      </div>
+      <!-- button submit-->
+    <%= f.submit "Inscription", class:"text-center w-full bg-blue-400 rounded-md text-white font-bold py-3 font-medium" %>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+<%=  %>
+<% end %>
+  
+  
+  
+  
+  <div class="shadow-lg w-80 p-4 flex flex-col bg-white rounded-lg">
+    <%= f.text_field :login, class:"mb-3 py-3 px-4 border border-gray-400 focus:outline-none rounded-md focus:ring-1 ring-cyan-500", hide_label: true,
+        placeholder:"N° de telephone ou Adresse Email" %>
+    <%= f.password_field :password, autocomplete: "current-password", class:"mb-3 py-3 px-4 border border-gray-400 focus:outline-none rounded-md focus:ring-1 ring-cyan-500",
+        placeholder:"Mot de passe" %>
+    <%= f.submit "Connexion", class:"w-full bg-blue-500 text-white p-3 rounded-lg font-semibold text-lg" %>
+    
+    <a class="text-blue-400 text-center my-2">Mot de passe oublie?</a>
+    <hr />
+       Inscrivez-vous gratuitement, C'est simple
+       <%= link_to accounted_student_path  do %> 
+        <button class="w-full bg-green-400 mt-8 mb-4 text-white p-3 rounded-lg
+                font-semibold text-lg">Inscription élève</button>
+                <a href="#" class="text-red-500 text-center my-2">Devenir Prof Partenaire</a>
+       <% end %>
+  </div>

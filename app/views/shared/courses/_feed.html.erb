@@ -1,0 +1,45 @@
+<!-- Home feed-->
+<!-- Home feed -onglet Msg -->
+<% content_for @title= "Accueil" %>
+<!-- Home feed -onglet Msg -->
+
+<%= render "shared/courses/feed_search" %>
+
+<% @courses.each do |course| %>
+  	<!-- margin between courses!-->
+	<div class="mt-2"></div>
+	<div class="card pt-2">
+		<!-- title/!-->
+		<p class="font-sans text-xl container ">
+			<%= link_to course, class:"hover:text-black text-black no-underline font-semibold" do %>
+				<%= course.title %>
+			<% end %>
+		</p>
+		<!--avatar users/!-->
+		<div class=" container">
+			<%= link_to edit_user_registration_path, class:"no-underline" do %>
+				<!-- User Card-->
+				<div class="flex items-center">
+					<img class="w-10 h-10 bg-gray-300 rounded-full mr-2">
+					<div class="text-sm mt-2">
+						<p class="font-bold text-black leading-none capitalize -mt-2"> 
+							<%= course.author %>
+						</p>
+						<p class="text-grey-dark -mt-1">
+							Prof - <%= course.material.title %>
+						</p>
+					</div>
+				</div>
+			<% end %>
+			<!-- Course card-->
+			<%= link_to course_path(course), class: " text-black no-underline hover:text-black hover:no-underline" do %>
+				<div class="container mb-2">
+					<!-- course content-->
+					<%= truncate(strip_tags(course.content.to_s.html_safe), length: 700) %>
+					<!-- More option-->
+					<span class="text-blue-700">(Plus...)</span>
+				</div>
+			<% end %>
+		</div>
+	</div>
+<% end %>
