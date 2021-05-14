@@ -1,0 +1,10 @@
+
+<div class="h-screen w-full flex overflow-hidden select-none mt-16"> 
+  <main class="my-1 pt-2 pb-2 px-10 flex-1 bg-gray-200 dark:bg-black rounded-l-lg
+        transition duration-500 ease-in-out overflow-y-auto">
+    <h1>New Material</h1>
+
+    <%= render 'form', material: @material %>
+    <%= link_to 'Back', materials_path %>
+  </main>
+</div>

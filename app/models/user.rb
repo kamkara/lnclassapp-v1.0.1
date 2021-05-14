@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable, authentication_keys: [:login]
 
 
-  #has_many :materials
   #has_many :courses
+  has_many :materials
   has_many :levels  
 
 ################  VALIDATIONS  ###########################

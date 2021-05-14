@@ -1,5 +1,10 @@
-<h1>New Level</h1>
 
-<%= render 'form', level: @level %>
+<div class="h-screen w-full flex overflow-hidden select-none">
 
-<%= link_to 'Back', levels_path %>
+    <%= link_to 'Retour', levels_path %>
+    <main class="my-1 pt-2 pb-2 px-10 flex-1 bg-gray-200 dark:bg-black rounded-l-lg
+            transition duration-500 ease-in-out overflow-y-auto">
+        <br>Nouveau Niveau</h1>
+        <%= render 'form', level: @level %>
+    </main>
+</div>
