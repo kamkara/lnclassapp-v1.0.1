@@ -17,7 +17,7 @@ ActiveStorage.start()
  const imagePath = (name) => images(name, true)
 
 import "stylesheets/application"
-imort "javascript.js"
+import "javascript.js"
 
 // require jquery
 //= require jquery
