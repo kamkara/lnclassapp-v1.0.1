@@ -31,6 +31,9 @@ gem 'bootstrap', '~> 5.0.0'
 gem 'bootstrap_form', '~> 4.5'
 
 
+################  slugging ###############
+gem 'friendly_id', '~> 5.4', '>= 5.4.2'
+
 ################  Js ###############
 gem 'jquery-rails'
 
