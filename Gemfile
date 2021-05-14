@@ -23,23 +23,21 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 ################  Styles ###############
-#gem 'tailwindcss-rails', '~> 0.3.3'
+gem "tailwindcss-rails", "~> 0.3.3"
 gem 'bootstrap', '~> 5.0.0'
 
 
 ################  Forms ###############
 gem 'bootstrap_form', '~> 4.5'
 
+
 ################  slugging ###############
+
 gem 'friendly_id', '~> 5.4', '>= 5.4.2'
 
 ################  Js ###############
 gem 'jquery-rails'
 
-
-################  Membership Section  ################
-
-################  Membership Section  ################
 
 ################  Membership Section  ################
 gem 'devise', '~> 4.8'
@@ -55,24 +53,6 @@ gem 'devise', '~> 4.8'
 #gem 'devise_suspendable', '~> 0.6.1'
 #gem 'devise-i18n-views', '~> 0.3.7'
 #gem 'devise-i18n', '~> 1.9', '>= 1.9.4'
-
-#gem 'devise_uid', '~> 0.1.1'
-#gem 'devise_lastseenable', '~> 0.0.6'
-#gem 'devise_roles', '~> 0.3.0'
-#gem 'devise_invitable', '~> 2.0', '>= 2.0.5'
-#gem 'devise_invitations', '~> 0.2.1'
-#gem 'devise_marketable', '~> 0.0.4'
-#gem 'devise_suspendable', '~> 0.6.1'
-#gem 'devise-i18n-views', '~> 0.3.7'
-#gem 'devise-i18n', '~> 1.9', '>= 1.9.4'
-
-#gem 'devise_uid', '~> 0.1.1'
-#gem 'devise_lastseenable', '~> 0.0.6'
-#gem 'devise_roles', '~> 0.3.0'
-#gem 'devise_invitable', '~> 2.0', '>= 2.0.5'
-#gem 'devise_invitations', '~> 0.2.1'
-#gem 'devise_marketable', '~> 0.0.4'
-#gem 'devise_suspendable', '~> 0.6.1'
 
 
 
@@ -109,4 +89,3 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem "tailwindcss-rails", "~> 0.3.3"
