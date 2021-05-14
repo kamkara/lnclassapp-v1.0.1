@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :courses
   resources :materials
   resources :levels
   root to:'homes#index'

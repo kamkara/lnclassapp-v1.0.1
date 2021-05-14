@@ -7,5 +7,6 @@ class CreateMaterials < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+    add_index :materials, :slug, unique: true
   end
 end

@@ -10,11 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_14_114013) do
+ActiveRecord::Schema.define(version: 2021_05_14_115717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "courses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.string "slug"
+    t.uuid "level_id", null: false
+    t.uuid "material_id", null: false
+    t.uuid "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["level_id"], name: "index_courses_on_level_id"
+    t.index ["material_id"], name: "index_courses_on_material_id"
+    t.index ["slug"], name: "index_courses_on_slug", unique: true
+    t.index ["user_id"], name: "index_courses_on_user_id"
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
@@ -33,6 +48,7 @@ ActiveRecord::Schema.define(version: 2021_05_14_114013) do
     t.uuid "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["slug"], name: "index_levels_on_slug", unique: true
     t.index ["user_id"], name: "index_levels_on_user_id"
   end
 
@@ -42,6 +58,7 @@ ActiveRecord::Schema.define(version: 2021_05_14_114013) do
     t.uuid "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["slug"], name: "index_materials_on_slug", unique: true
     t.index ["user_id"], name: "index_materials_on_user_id"
   end
 
@@ -78,8 +95,12 @@ ActiveRecord::Schema.define(version: 2021_05_14_114013) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["phone_contact"], name: "index_users_on_phone_contact", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["slug"], name: "index_users_on_slug", unique: true
   end
 
+  add_foreign_key "courses", "levels"
+  add_foreign_key "courses", "materials"
+  add_foreign_key "courses", "users"
   add_foreign_key "levels", "users"
   add_foreign_key "materials", "users"
 end

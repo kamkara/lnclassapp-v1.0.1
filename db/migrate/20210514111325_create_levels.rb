@@ -7,5 +7,6 @@ class CreateLevels < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+    add_index :levels, :slug, unique: true
   end
 end
