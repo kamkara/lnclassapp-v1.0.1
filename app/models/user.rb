@@ -72,11 +72,11 @@ def self.find_for_database_authentication(warden_conditions)
 end
 
 private
-  # User role
-  def assign_user_role 
+  # User role {dafault role is student}
+  def assign_user_role
       add_role(:teacher) if self.matricule == "" && self.role == "teacher"
-      add_role(:city_manager) if self.matricule != "" && self.role == "city_manager"
-      add_role(:admin) if self.matricule != "" && self.role == "team"
+      add_role(:city_manager) if self.matricule == "" && self.role == "city_manager"
+      add_role(:admin) if self.matricule == "" && self.role == "team"
       self.save!
   end
 
