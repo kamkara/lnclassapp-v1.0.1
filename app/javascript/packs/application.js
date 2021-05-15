@@ -21,8 +21,3 @@ import "javascript.js"
 
 // require jquery
 //= require jquery
-
-require("trix")
-require("@rails/actiontext")
-
-
