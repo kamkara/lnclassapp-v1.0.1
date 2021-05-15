@@ -31,6 +31,23 @@
                     <i class="fas fa-user-circle"></i> <%= current_user.full_name %>
                 <% end %>
             </li>
+            <% if current_user.role == "student" %>
+            <li class="mr-3">
+                <%= link_to root_path, 
+                class: "inline-block text-gray-600 no-underline hover:text-gray-200 
+                hover:text-underline py-2 px-4 active m-links nav-link capitalize text-white" do %>
+                    <i class="fas fa-user-circle"></i> Resources
+                <% end %>
+            </li>
+            <% elsif current_user.role == "teacher" %>
+            <li class="mr-3">
+                <%= link_to root_path, 
+                class: "inline-block text-gray-600 no-underline hover:text-gray-200 
+                hover:text-underline py-2 px-4 active m-links nav-link capitalize text-white" do %>
+                    <i class="fas fa-user-circle"></i> Creations
+                <% end %>
+            </li>
+            <% end %>
 
             <!-- create course by teacher/!-->        
             <% if current_user.role == "teacher" %>
