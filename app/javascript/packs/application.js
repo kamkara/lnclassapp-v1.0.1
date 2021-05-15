@@ -17,12 +17,10 @@ ActiveStorage.start()
  const imagePath = (name) => images(name, true)
 
 import "stylesheets/application"
-import "javascript.js"
+
 
 // require jquery
 //= require jquery
 
 require("trix")
 require("@rails/actiontext")
-
-

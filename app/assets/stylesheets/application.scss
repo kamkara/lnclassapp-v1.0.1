@@ -16,4 +16,6 @@
  // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 @import "rails_bootstrap_forms";
-
+// application.scss
+@import "./actiontext.scss";
+//= require actiontext
