@@ -2,92 +2,51 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :trackable, authentication_keys: [:login]
+  :recoverable, :rememberable, :validatable, :trackable, authentication_keys: [:login]
+  
+  attr_writer :login
+  #CALLBACK
+  before_validation :custom_validations
+  after_create :assign_user_role
+  before_save :user_full_name
+  before_save :assign_school_at_team
+  before_save :normalize_fields
 
-
+  #RELATIONS
   has_many :courses
   has_many :materials
   has_many :levels  
 
 ################  VALIDATIONS  ###########################
-def roles
-  if self.role == "student"
-    ########### role default value= STUDENT  ######
-    validates :email, :matricule, uniqueness: true
-  elsif self.role == "teacher" 
-    validates :email, uniqueness: true
-  elsif self.role == "city manager"
-    validates :email, uniqueness: true
-  elsif self.role == "team"
-    validates :email, uniqueness: true
-  end
-  
-end
-  ########### UNIQUENESS  ######
-    #validates :email, :matricule, uniqueness: true
-
-  ######### PRESENTES && FORMAT  ######
-    validates :phone_contact,
-              #:city, :school_name,
-              :email,  presence: true
-
-    validates :last_name, :first_name,
-              presence: true,
-              length: { maximum: 30 },
-              format: { with: /\A[^0-9`!@#\$%\^&*+_=]+\z/ }
-
-    validates :phone_contact, :whatsapp_contact,
-              length: { in: 8..12 },
-              numericality: { only_integer: true },
-               uniqueness: true
 
 
-################ NOT IMPLENETED  ###########################
-  #validates :gender, presence: true
-  #Birthday
-   #validates :birthday, presence: true
+######### PRESENTES && FORMAT  ######
+validates :phone_contact,
+          :city, :school_name,
+          :email,  presence: true
 
-  #enum user_gender: [:female, :male ], _default: :male
+validates :last_name, :first_name,
+          presence: true,
+          length: { maximum: 30 },
+          format: { with: /\A[^0-9`!@#\$%\^&*+_=]+\z/ }
 
-#enum user role
-# define rails enum and the underlying values to use for every enum-value
-#enum user_role: [:student, :teacher, :admin, :team, :support], default: :student
+validates :phone_contact, :whatsapp_contact,
+          length: { in: 8..12 },
+          numericality: { only_integer: true },
+          uniqueness: true
 
-#enum roles: [:student, :teacher, :admin], _default: :student
-################  CUSTOM ACTIONS  ###########################
-
-def full_name
-  self.full_name = "#{self.first_name} #{self.last_name}"
-end
-
-def team_sign_up
-  if self.role == "team"
-    self.school_name = "QH Aplatform"
-  end
-end
 
 ############ SLUG ###########
 def slug
   self.slug = self.full_name
 end
 
-  extend FriendlyId
-    friendly_id :slug, use: :slugged
+extend FriendlyId
+friendly_id :slug, use: :slugged
 
-  def should_generate_new_friendly_id?
-    slug_changed?
-  end
-################  BEFORE ACTIONS  ###########################
-#Delete whitespaces before and after fields, DownCase and capitalize
-before_save do
-  self.phone_contact      = phone_contact.strip.squeeze(" ")
-  self.whatsapp_contact   = whatsapp_contact.strip.squeeze(" ")
-  self.first_name         = first_name.strip.squeeze(" ").downcase.capitalize
-  self.last_name          = last_name.strip.squeeze(" ").downcase.capitalize
-  self.city               = city.strip.squeeze(" ").downcase.capitalize
-  self.school_name        = school_name.strip.squeeze(" ").downcase.capitalize
+def should_generate_new_friendly_id?
+  slug_changed?
 end
-
 
 ################  CONSTANTE   ###########################
 CLASSROOM   = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
@@ -98,19 +57,49 @@ ROLE        = ["student", "teacher", "Admin"]
 
 ################  SIGN IN PHONE NUMBR OR EMAIL  ###########################
 
-  attr_writer :login
 
-  def login
-    @login || self.phone_contact || self.email
+def login
+  @login || self.phone_contact || self.email
+end
+
+def self.find_for_database_authentication(warden_conditions)
+  conditions = warden_conditions.dup
+  if login = conditions.delete(:login)
+    where(conditions.to_h).where(["lower(phone_contact) = :value OR lower(email) = :value", { :value => login }]).first
+  elsif conditions.has_key?(:contact_phone) || conditions.has_key?(:email)
+    where(conditions.to_h).first
+  end
+end
+
+private
+  # User role
+  def assign_user_role 
+      add_role(:teacher) if self.matricule == "" && self.role == "teacher"
+      add_role(:city_manager) if self.matricule != "" && self.role == "city_manager"
+      add_role(:admin) if self.matricule != "" && self.role == "team"
+      self.save!
   end
 
-  def self.find_for_database_authentication(warden_conditions)
-    conditions = warden_conditions.dup
-      if login = conditions.delete(:login)
-        where(conditions.to_h).where(["lower(phone_contact) = :value OR lower(email) = :value", { :value => login }]).first
-      elsif conditions.has_key?(:contact_phone) || conditions.has_key?(:email)
-        where(conditions.to_h).first
-      end
+  #require uniqueness matricule for students and email  
+  def custom_validations
+    validate :email, :matricule, uniqueness: true unless self.role == "student"
   end
 
+  def user_full_name
+    self.full_name = "#{self.first_name} #{self.last_name}"
+  end
+
+  def assign_school_at_team
+    self.school_name ="QH LNCLASS" unless self.role == "team"
+  end
+
+  def normalize_fields
+    self.phone_contact      = phone_contact.strip.squeeze(" ")
+    self.whatsapp_contact   = whatsapp_contact.strip.squeeze(" ")
+    self.first_name         = first_name.strip.squeeze(" ").downcase.capitalize
+    self.last_name          = last_name.strip.squeeze(" ").downcase.capitalize
+    self.city               = city.strip.squeeze(" ").downcase.capitalize
+    self.school_name        = school_name.strip.squeeze(" ").downcase.capitalize
+  end
+  
 end
