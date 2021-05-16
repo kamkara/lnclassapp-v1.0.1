@@ -48,7 +48,6 @@ hooks:
       gem install bundler:2.2.16
       bundle config set --local without 'development test'
       bundle install
-    #  bundle exec rake assets:precompile
       yarn install
       bundle exec rake assets:precompile
     deploy: |
