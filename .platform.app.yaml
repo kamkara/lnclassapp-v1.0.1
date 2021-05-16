@@ -42,6 +42,10 @@ variables:
         RAILS_TMP: /tmp
         EXECJS_RUNTIME: 'Node'
 
+dependencies:
+    nodejs:
+        yarn: "*"
+        npm: latest
 
 hooks:
     build: |
