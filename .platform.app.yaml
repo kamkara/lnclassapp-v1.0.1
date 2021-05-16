@@ -27,6 +27,8 @@ mounts:
 relationships:
     postgresdatabase: 'dbpostgres:postgresql'
 
+# The size of the persistent disk of the application (in MB).
+disk: 1024
 
 hooks:
     build: |
