@@ -30,10 +30,21 @@ relationships:
 # The size of the persistent disk of the application (in MB).
 disk: 1024
 
+# Set environment variables to adjust how Rails will run.
+variables:
+    env:
+        RAILS_ENV: 'production'
+        RAILS_LOG_TO_STDOUT: true
+        BUNDLE_ERROR_ON_STDERR: 1
+        RAILS_TMP: /tmp
+        EXECJS_RUNTIME: 'Node'
+
+
 hooks:
     build: |
       gem install bundler:2.2.16
-      bundle install --without development test
+      bundle config set --local without 'development test'
+      bundle install
     deploy: |
       RACK_ENV=production bundle exec rake db:migrate
 
