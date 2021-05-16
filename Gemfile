@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.7'
 
 ################  Accounted ###############
 gem 'rolify', '~> 6.0'
+gem 'uglifier', '~> 4.2'
+gem 'unicorn', '~> 6.0'
 
 ################  Styles ###############
 gem 'bootstrap', '~> 5.0.0'
