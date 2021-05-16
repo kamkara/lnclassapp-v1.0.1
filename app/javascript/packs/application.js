@@ -21,6 +21,9 @@ import "stylesheets/application"
 
 // require jquery
 //= require jquery
+//= require actiontext
 
 require("trix")
 require("@rails/actiontext")
+
+

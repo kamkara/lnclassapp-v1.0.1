@@ -26,6 +26,8 @@ Rails.application.configure do
 
   # Compress CSS using a preprocessor.
   config.assets.css_compressor = :sass
+  config.assets.css_compressor = Tailwindcss::Compressor.new(only_purge: %w[tailwind])
+
   config.assets.js_compressor = :uglifier
 
 
