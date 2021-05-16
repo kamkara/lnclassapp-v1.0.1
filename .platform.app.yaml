@@ -1,58 +1,47 @@
-# This file describes an application. You can have multiple applications
-# in the same project.
-#
-# See https://docs.platform.sh/user_guide/reference/platform-app-yaml.html
-
 # The name of this app. Must be unique within a project.
-name: "app"
+name: app
 
-# The runtime the application uses.
-type: "ruby:2.7"
+# The runtime the application uses. The 'type' key defines the base container
+# image that will be used to run the application. There is a separate base
+# container image for each primary language for the application,
+# in multiple versions. Check the Ruby documentation
+# (https://docs.platform.sh/languages/ruby.html#supported-versions)
+# to find the supported versions for the 'ruby' type.
+type: 'ruby:2.7'
+
+# The following block defines a single writable directory, 'web/uploads'
+# The 'source' specifies where the writable mount is. The 'local' source
+# indicates that the mount point will point to a local directory on the
+# application container. The 'source_path' specifies the subdirectory
+# from within the source that the mount should point at. 
+mounts:
+  'web/uploads':
+    source: local
+    source_path: uploads
 
 # The relationships of the application with services or other applications.
 #
 # The left-hand side is the name of the relationship as it will be exposed
 # to the application in the PLATFORM_RELATIONSHIPS variable. The right-hand
-# side is in the form `<service name>:<endpoint name>`.
+# side is in the form <service name>:<endpoint name>.
 relationships:
-    database: 'db:postgresql'
+    postgresdatabase: 'dbpostgres:postgresql'
 
-# The size of the persistent disk of the application (in MB).
-disk: 1024
 
-# Set environment variables to adjust how Rails will run.
-variables:
-    env:
-        RAILS_ENV: 'production'
-        RAILS_LOG_TO_STDOUT: true
-        BUNDLE_ERROR_ON_STDERR: 1
-        RAILS_TMP: /tmp
-        EXECJS_RUNTIME: 'Node'
-
-# The 'mounts' describe writable, persistent filesystem mounts in the application.
-mounts:
-    "/log":
-        source: local
-        source_path: log
-    "/tmp":
-        source: local
-        source_path: tmp
-
-# The hooks executed at various points in the lifecycle of the application.
 hooks:
-    # The build hook turns what is in source control into the deployable application.
     build: |
-        bundle install --without development test
-        RAILS_ENV=production bundle exec rake assets:precompile
-    # The deploy hook runs after your application has been deployed and started.
+      bundle install --without development test
     deploy: |
-        bundle exec rails db:migrate
-# The configuration of the application when running.
-web:
-    upstream:
-        # Send requests to the app server through a unix socket, whose location
-        # will be defined in an environment variable named SOCKET.
-        socket_family: "unix"
+      RACK_ENV=production bundle exec rake db:migrate
 
-    commands:
-        start: 'bundle exec unicorn -l $SOCKET'
+web:
+  upstream: 
+    socket_family: "unix"
+  commands: 
+    start: "\"unicorn -l $SOCKET -E production config.ru\""
+  locations: 
+    '/': 
+      root: "\"public\""
+      passthru: true
+      expires: "1h"
+      allow: true
