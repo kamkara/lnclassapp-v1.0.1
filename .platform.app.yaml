@@ -56,10 +56,10 @@ web:
   upstream: 
     socket_family: "unix"
   commands: 
-    start: "\"unicorn -l $SOCKET -E production config.ru\""
+    start: "unicorn -l $SOCKET -E production config.ru"
   locations: 
     '/': 
-      root: "\"public\""
+      root: "public"
       passthru: true
-      expires: "1h"
+      expires: 1h
       allow: true
