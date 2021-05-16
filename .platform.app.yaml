@@ -18,6 +18,9 @@ mounts:
   'web/uploads':
     source: local
     source_path: uploads
+    "/tmp":
+        source: local
+        source_path: tmp
 
 # The relationships of the application with services or other applications.
 #
