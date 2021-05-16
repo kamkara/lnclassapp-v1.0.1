@@ -8,3 +8,8 @@ dbpostgres:
     type: postgresql:13
     # The disk attribute is the size of the persistent disk (in MB) allocated to the service.
     disk: 4096
+    configuration:
+      extensions:
+        - plpgsql
+        - pgcrypto
+        - uuid-ossp

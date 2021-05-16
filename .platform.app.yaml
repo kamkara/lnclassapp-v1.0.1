@@ -15,12 +15,12 @@ type: 'ruby:2.7'
 # application container. The 'source_path' specifies the subdirectory
 # from within the source that the mount should point at. 
 mounts:
-    "/log":
-        source: local
-        source_path: log
-    "/tmp":
-        source: local
-        source_path: tmp
+    log:
+      source: local
+      source_path: log
+    tmp:
+      source: local
+      source_path: tmp
 
 # The relationships of the application with services or other applications.
 #
@@ -48,8 +48,9 @@ hooks:
       gem install bundler:2.2.16
       bundle config set --local without 'development test'
       bundle install
+      bundle exec rake assets:precompile
     deploy: |
-      RACK_ENV=production bundle exec rake db:migrate
+     bundle exec rake db:migrate
 
 web:
   upstream: 
