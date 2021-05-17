@@ -42,18 +42,13 @@ variables:
         RAILS_TMP: /tmp
         EXECJS_RUNTIME: 'Node'
 
-dependencies:
-    nodejs:
-        yarn: "*"
-        npm: latest
+
 
 hooks:
     build: |
       gem install bundler:2.2.16
       bundle config set --local without 'development test'
       bundle install
-      yarn install
-      bundle exec rake assets:precompile
     deploy: |
      bundle exec rake db:migrate
 
