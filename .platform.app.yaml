@@ -46,7 +46,8 @@ dependencies:
     nodejs:
         yarn: "*"
         npm: latest
-    sass: ">= 6"
+    sass: "6.0.0"
+   
 hooks:
     build: |
       gem install bundler:2.2.16
