@@ -14,14 +14,14 @@ type: 'ruby:2.7'
 # indicates that the mount point will point to a local directory on the
 # application container. The 'source_path' specifies the subdirectory
 # from within the source that the mount should point at. 
-mounts:
-    log:
-      source: local
-      source_path: log
-    tmp:
-      source: local
-      source_path: tmp
 
+mounts:
+    tmp:
+        source: local
+        source_path: tmp
+    logs:
+        source: local
+        source_path: logs
 # The relationships of the application with services or other applications.
 #
 # The left-hand side is the name of the relationship as it will be exposed
@@ -46,7 +46,7 @@ dependencies:
     nodejs:
         yarn: "*"
         npm: latest
-    sass: "6.0.0"
+        sass: "6.0.0"
    
 hooks:
     build: |
