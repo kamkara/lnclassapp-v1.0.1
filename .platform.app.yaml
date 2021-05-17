@@ -45,7 +45,7 @@ variables:
 dependencies:
     nodejs:
         yarn: "*"
-        npm: latest
+        npm: "*"
         sass: "6.0.0"
    
 hooks:
