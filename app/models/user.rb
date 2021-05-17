@@ -82,7 +82,7 @@ private
 
   #require uniqueness matricule for students and email  
   def custom_validations
-    validate :email, :matricule, uniqueness: true unless self.role == "student"
+    validate :email, :matricule, uniqueness: true if self.role == "student"
   end
 
   def user_full_name
