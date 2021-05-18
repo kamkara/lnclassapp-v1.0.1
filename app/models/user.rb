@@ -4,7 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable, :trackable, authentication_keys: [:login]
   
+  
+  #RELATIONS
+  has_many :courses
+  has_many :materials
+  has_many :levels  
+  has_one_attached :avatar
   attr_writer :login
+
+  
   #CALLBACK
   before_validation :custom_validations
   after_create :assign_user_role
@@ -12,10 +20,6 @@ class User < ApplicationRecord
   before_save :assign_school_at_team
   before_save :normalize_fields
 
-  #RELATIONS
-  has_many :courses
-  has_many :materials
-  has_many :levels  
 
 ################  VALIDATIONS  ###########################
 

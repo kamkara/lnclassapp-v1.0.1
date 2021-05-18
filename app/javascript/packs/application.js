@@ -17,7 +17,7 @@ ActiveStorage.start()
  const imagePath = (name) => images(name, true)
 
 import "stylesheets/application"
-
+global.toastr = require("toastr")
 
 // require jquery
 //= require jquery
