@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'admin/index'
+  get 'tablesclass/index'
   get 'accounted/teachers'
   get 'accounted/students'
   get 'profil/index'
