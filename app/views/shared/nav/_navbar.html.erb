@@ -51,7 +51,7 @@
                 </li>
             <% elsif current_user.role == "team" %>
                 <li class="mr-3 nav-item nav-item_feed active">
-                    <%= link_to root_path, 
+                    <%= link_to tablesclass_index_path, 
                     class: "inline-block text-gray-600 no-underline hover:text-gray-200
                      hover:text-underline py-2 px-4 m-links nav-link active text-white " do %>
                         <i class="fas fa-users"></i> Admistration
