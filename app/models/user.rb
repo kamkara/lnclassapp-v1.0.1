@@ -9,19 +9,19 @@ class User < ApplicationRecord
   has_many :courses
   has_many :materials
   has_many :levels  
-  has_one_attached :avatar
   attr_writer :login
 
+  ################  AVATAR ###########################
+  has_one_attached :avatar do |attachable|
+    attachable.variant :thumb, resize: "100x100"
+  end
   
   #CALLBACK
-  before_validation :custom_validations
   after_create :assign_user_role
   before_save :user_full_name
   before_save :assign_school_at_team
   before_save :normalize_fields
 
-
-################  VALIDATIONS  ###########################
 
 
 ######### PRESENTES && FORMAT  ######
@@ -38,7 +38,6 @@ validates :phone_contact, :whatsapp_contact,
           length: { in: 8..12 },
           numericality: { only_integer: true },
           uniqueness: true
-
 
 ############ SLUG ###########
 def slug
@@ -60,7 +59,11 @@ ROLE        = ["student", "teacher", "Admin"]
 
 
 ################  SIGN IN PHONE NUMBR OR EMAIL  ###########################
-
+def student_matricule
+  if self.role == "student"
+   validates :matricule, presence: true, uniqueness: true  
+  end
+end
 
 def login
   @login || self.phone_contact || self.email
@@ -85,9 +88,8 @@ private
   end
 
   #require uniqueness matricule for students and email  
-  def custom_validations
-    validate :email, :matricule, uniqueness: true if self.role == "student"
-  end
+  
+    
 
   def user_full_name
     self.full_name = "#{self.first_name} #{self.last_name}"

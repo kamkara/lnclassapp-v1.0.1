@@ -8,15 +8,23 @@
   <!-- Username-->
   <div class="-mx-3 md:flex">
     <p class="text-red text-xs italic">Informations personnelle.</p>
+
+    <div class="md:w-1/3 px-3 mb-2 md:mb-0">
+    <!-- photo de profil-->
+      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
+        photo de profil:
+      </label>
+      <%= f.file_field :avatar, class:"appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3", hide_label:true %>
+    </div>
     <!-- last name-->
-    <div class="md:w-1/2 px-3 mb-2 md:mb-0">
+    <div class="md:w-1/3 px-3 mb-2 md:mb-0">
       <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
         Nom:
       </label>
       <%= f.text_field :first_name, class:"appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3", hide_label:true %>
     </div>
     <!-- last name-->
-    <div class="md:w-1/2 px-3 mb-2 md:mb-0">
+    <div class="md:w-1/3 px-3 mb-2 md:mb-0">
       <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
         Prénom:
       </label>
