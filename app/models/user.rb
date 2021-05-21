@@ -12,9 +12,7 @@ class User < ApplicationRecord
   attr_writer :login
 
   ################  AVATAR ###########################
-  has_one_attached :avatar do |attachable|
-    attachable.variant :thumb, resize: "100x100"
-  end
+  has_one_attached :avatar 
   
   #CALLBACK
   after_create :assign_user_role
@@ -38,6 +36,7 @@ validates :phone_contact, :whatsapp_contact,
           length: { in: 8..12 },
           numericality: { only_integer: true },
           uniqueness: true
+validates :matricule, length: { is: 9 }
 
 ############ SLUG ###########
 def slug
