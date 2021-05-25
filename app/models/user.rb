@@ -36,7 +36,7 @@ validates :phone_contact, :whatsapp_contact,
           length: { in: 8..12 },
           numericality: { only_integer: true },
           uniqueness: true
-validates :matricule, length: { is: 9 }
+
 
 ############ SLUG ###########
 def slug
@@ -57,12 +57,18 @@ CITY_NAME       = [ "Tiassalé", "N'Douci", "Agboville", "Divo", "Autres villes"
 ROLE        = ["student", "teacher", "Admin"]
 
 
-################  SIGN IN PHONE NUMBR OR EMAIL  ###########################
 def student_matricule
-  if self.role == "student"
-   validates :matricule, presence: true, uniqueness: true  
+  ########### role default value= STUDENT  ######
+  if self.role === "student"
+    validates :matricule, uniqueness: true, length: { is: 9 }
+  elsif self.role === "teacher" || self.role === "city manager" || self.role === "team"
+    validates :email, uniqueness: true
   end
 end
+
+
+
+################  SIGN IN PHONE NUMBR OR EMAIL  ###########################
 
 def login
   @login || self.phone_contact || self.email
