@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_18_160751) do
+ActiveRecord::Schema.define(version: 2021_05_26_203550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -101,6 +101,17 @@ ActiveRecord::Schema.define(version: 2021_05_18_160751) do
     t.index ["user_id"], name: "index_materials_on_user_id"
   end
 
+  create_table "messages", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.text "content"
+    t.string "slug"
+    t.uuid "user_id", null: false
+    t.uuid "course_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_messages_on_course_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -144,4 +155,6 @@ ActiveRecord::Schema.define(version: 2021_05_18_160751) do
   add_foreign_key "courses", "users"
   add_foreign_key "levels", "users"
   add_foreign_key "materials", "users"
+  add_foreign_key "messages", "courses"
+  add_foreign_key "messages", "users"
 end

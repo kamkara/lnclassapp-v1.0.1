@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get 'accounted/teachers'
   get 'accounted/students'
   get 'profil/index'
-  resources :courses
+  resources :courses do
+    resources :messages
+  end
   resources :materials
   resources :levels
   root to:'homes#index'

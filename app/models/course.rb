@@ -5,6 +5,7 @@ class Course < ApplicationRecord
   belongs_to :level
   belongs_to :material
   #has_many :exercices
+  has_many :messages, dependent: :destroy
   has_rich_text :content
 
   #Avoid N+1 queries
