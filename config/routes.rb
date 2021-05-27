@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'accounted/students'
   get 'profil/index'
   resources :courses do
+    resources :posts
     resources :messages
   end
   resources :materials

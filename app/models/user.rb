@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :courses
   has_many :materials
   has_many :levels  
+  has_many :posts
   has_many :messages
   attr_writer :login
 
