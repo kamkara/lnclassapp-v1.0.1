@@ -1,10 +1,8 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_course, only: [:create, :edit, :show, :update, :destroy]
   before_action :set_post, only: %i[ show edit update destroy ]
 
-  # GET /posts or /posts.json
-  def index
-    @posts = Post.all
-  end
 
   # GET /posts/1 or /posts/1.json
   def show
@@ -12,54 +10,59 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
+    @post = @course.posts.build
   end
 
   # GET /posts/1/edit
   def edit
+    @course = Course.find(params[:course_id])
+    @post = @course.posts.find(params[:id])
   end
 
   # POST /posts or /posts.json
   def create
-    @post = Post.new(post_params)
+    @post = @course.posts.create(post_params)
+    @post.user_id = current_user.id
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: "Post was successfully created." }
-        format.json { render :show, status: :created, location: @post }
+        format.html { redirect_to course_path(@course) }
+        format.js # renders create.js.erb
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+        format.html { redirect_to course_path(@course), notice: "post did not save. Please try again."}
+        format.js
       end
     end
   end
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
-    respond_to do |format|
+    @post = @course.posts.friendly.find(params[:id])
+     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: "Post was successfully updated." }
-        format.json { render :show, status: :ok, location: @post }
+        format.html { redirect_to course_path(@course), notice: 'post was successfully updated.' }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+        format.html { render :edit }
+        format.json { render json: @message.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /posts/1 or /posts/1.json
   def destroy
+    @post = @course.posts.friendly.find(params[:id])
     @post.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to course_path(@course)
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+  # Use callbacks to share common setup or constraints between actions.
+     def set_course
+      @course = Course.friendly.find(params[:course_id])
+    end
+    
     def set_post
-      @post = Post.find(params[:id])
+      @post = Post.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
