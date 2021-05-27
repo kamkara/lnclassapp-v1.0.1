@@ -31,16 +31,12 @@
     </div>
     <!-- Exercices-->
     <div class="col-12 col-md-6 col-lg-6">
-      <div class="display_message">
-        <h2>Posts</h2>
-          <% for m in @course.messages %>
-              <ul>
-                <li><%= m.content %></li>
-            </ul>
-          <% end %>
+      <div id="display_message">
+        <%= render @course.messages %>
       </div>
+
       <div class="massege_form">
-      <%= render "/messages/form" %>
+        <%= render "messages/form" %>
       </div>
     </div>
   </div>

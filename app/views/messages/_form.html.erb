@@ -1,11 +1,8 @@
-<%= form_with(model: [@course, @course.messages.build], local: true) do |f| %>
+<%= form_with(model: [@course, @course.messages.build], remote: true) do |f| %>
   
-
   <div class="field">
-   
     <%= f.rich_text_area :content %>
   </div>
-
 
   <div class="actions my-2">
     <%= f.submit "Envoi", class:"bg-blue-600" %>
