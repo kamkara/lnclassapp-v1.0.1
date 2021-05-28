@@ -1,0 +1,10 @@
+<%= form_with(model:[@course, @course.posts.build], remote:true) do |f| %>
+  
+  <div class="field">
+    <%= f.rich_text_area :content %>
+  </div>
+
+  <div class="actions my-2">
+    <%= f.submit "Post", class:"btn btn-primary" %>
+  </div>
+<% end %>

@@ -4,20 +4,24 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable, :trackable, authentication_keys: [:login]
   
+  
+  #RELATIONS
+  has_many :courses
+  has_many :materials
+  has_many :levels  
+  has_many :posts
+  has_many :messages
   attr_writer :login
+
+  ################  AVATAR ###########################
+  has_one_attached :avatar 
+  
   #CALLBACK
-  before_validation :custom_validations
   after_create :assign_user_role
   before_save :user_full_name
   before_save :assign_school_at_team
   before_save :normalize_fields
 
-  #RELATIONS
-  has_many :courses
-  has_many :materials
-  has_many :levels  
-
-################  VALIDATIONS  ###########################
 
 
 ######### PRESENTES && FORMAT  ######
@@ -55,8 +59,18 @@ CITY_NAME       = [ "Tiassalé", "N'Douci", "Agboville", "Divo", "Autres villes"
 ROLE        = ["student", "teacher", "Admin"]
 
 
-################  SIGN IN PHONE NUMBR OR EMAIL  ###########################
+def student_matricule
+  ########### role default value= STUDENT  ######
+  if self.role === "student"
+    validates :matricule, uniqueness: true, length: { is: 9 }
+  elsif self.role === "teacher" || self.role === "city manager" || self.role === "team"
+    validates :email, uniqueness: true
+  end
+end
 
+
+
+################  SIGN IN PHONE NUMBR OR EMAIL  ###########################
 
 def login
   @login || self.phone_contact || self.email
@@ -81,9 +95,8 @@ private
   end
 
   #require uniqueness matricule for students and email  
-  def custom_validations
-    validate :email, :matricule, uniqueness: true unless self.role == "student"
-  end
+  
+    
 
   def user_full_name
     self.full_name = "#{self.first_name} #{self.last_name}"

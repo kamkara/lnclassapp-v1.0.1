@@ -1,0 +1,15 @@
+<h1>Editer le Message</h1>
+
+  <%= f.button :submit, 'Update reply', class:'button is-info' %>
+<% end %>
+
+<%= form_with(model: [@course, @message]) do |f| %>
+  
+  <div class="field">
+    <%= f.rich_text_area :content %>
+  </div>
+
+  <div class="actions my-2">
+    <%= f.submit "Editer", class:"bg-blue-600" %>
+  </div>
+<% end %>
