@@ -31,8 +31,9 @@
     </div>
     <!-- Post-->
     <div class="col-12 col-md-6 col-lg-6">
-      <div id="display_post">
+      <div id="display_post" id="readMore">
         <%= render @course.posts %>
+				<span class="text-blue-700">(Plus...)</span>
       </div>
 
       <div class="post_form">
@@ -41,8 +42,13 @@
     </div>
 
     <!-- Message-->
-      <div id="display_message">
+      <div id="display_message" >
+      <%= link_to course_message_path(@course), class:"text-black no-underline hover:text-black hover:no-underline" do %>
+      <div class="container mb-2" id="readMore">
         <%= render @course.messages %>
+				<span class="text-blue-700">(Plus...)</span>
+      </div>
+      <% end %>
       </div>
 
       <div class="massege_form">

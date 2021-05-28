@@ -19,6 +19,7 @@ ActiveStorage.start()
 import "stylesheets/application"
 global.toastr = require("toastr")
 
+
 // require jquery
 //= require jquery
 
