@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
+  get 'admin/index'
+  get 'tablesclass/index'
+  get 'accounted/teachers'
+  get 'accounted/students'
   get 'profil/index'
-  resources :courses
+  resources :courses do
+    resources :posts
+    resources :messages
+  end
   resources :materials
   resources :levels
   root to:'homes#index'
