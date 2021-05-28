@@ -11,17 +11,11 @@
       </div>
      
     </div>
-    	<%= link_to root_path, class: " text-black no-underline hover:text-black hover:no-underline" do %>
-				<div class="container mb-2">
-					<!-- meassage content-->
-					<%= truncate(strip_tags(message.content.to_s.html_safe), length: 400) %>
-					<!-- More option-->
-					<span class="text-blue-700">(Plus...)</span>
-				</div>
-			<% end %>
     
-    <div class="border-gray-200 dark:border-gray-600 border border-b-0 my-1"></div>
-<%= render "/messages/features" %>
+    <%= message.content %>
 
+    <div class="border-gray-200 dark:border-gray-600 border border-b-0 my-1"></div>
+
+  <%= render "messages/features" %>
   </div>
 </div>
