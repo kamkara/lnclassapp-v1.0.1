@@ -9,6 +9,9 @@ gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
+#puma benchmark to count thread and worker necessairy
+#gem 'puma-benchmark', '~> 0.1.1'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -59,6 +62,12 @@ gem 'devise', '~> 4.8'
 #gem 'devise-i18n-views', '~> 0.3.7'
 #gem 'devise-i18n', '~> 1.9', '>= 1.9.4'
 
+
+#################### production  ##########################""
+# Use Unicorn as the app server
+group :production do
+  gem 'unicorn', '~> 6.0'
+end
 
 
 # Use Active Storage variant

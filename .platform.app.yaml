@@ -14,10 +14,18 @@ type: 'ruby:2.7'
 # indicates that the mount point will point to a local directory on the
 # application container. The 'source_path' specifies the subdirectory
 # from within the source that the mount should point at. 
+#mounts:
+#  'web/uploads':
+#    source: local
+#    source_path: uploads
+
 mounts:
-  'web/uploads':
-    source: local
-    source_path: uploads
+    tmp:
+        source: local
+        source_path: tmp
+    logs:
+        source: local
+        source_path: logs
 
 # The relationships of the application with services or other applications.
 #
@@ -48,10 +56,10 @@ web:
   upstream: 
     socket_family: "unix"
   commands: 
-    start: "\"unicorn -l $SOCKET -E production config.ru\""
+    start: "unicorn -l $SOCKET -E production config.ru"
   locations: 
     '/': 
-      root: "\"public\""
+      root: "public"
       passthru: true
       expires: "1h"
       allow: true
