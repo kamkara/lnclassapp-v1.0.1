@@ -27,10 +27,20 @@ mounts:
 relationships:
     postgresdatabase: 'dbpostgres:postgresql'
 
+# Set environment variables to adjust how Rails will run.
+variables:
+    env:
+        RAILS_ENV: 'production'
+        RAILS_LOG_TO_STDOUT: true
+        BUNDLE_ERROR_ON_STDERR: 1
+        RAILS_TMP: /tmp
+        EXECJS_RUNTIME: 'Node'
 
 hooks:
     build: |
-      bundle install --without development test
+      gem install bundler:2.2.16
+      bundle config set --local without 'development test'
+      bundle install
     deploy: |
       RACK_ENV=production bundle exec rake db:migrate
 
