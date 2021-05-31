@@ -13,3 +13,4 @@ dbpostgres:
         - plpgsql
         - pgcrypto
         - uuid-ossp
+        
