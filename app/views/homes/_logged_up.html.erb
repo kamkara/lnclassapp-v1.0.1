@@ -6,9 +6,7 @@
         <div class="container px-6 py-2 mx-auto md:flex md:justify-between md:items-center">
             <div class="flex items-center justify-between">
                 <div>
-                    <a href="#" class="text-xl text-gray-800 font-semiblod md:text-3xl hover:text-gray-700">
-                        Lnclass
-                    </a>
+                    <%= link_to 'LNCLASS', root_path, class:"text-xl text-gray-800 font-blod uppercase md:text-3xl hover:text-gray-700" %>
                 </div>
                 <div class="flex md:hidden">
                     <button type="button" aria-label="toggle menu"
@@ -22,18 +20,11 @@
                 </div>
             </div>
             <div class="items-center hidden md:flex">
-                <div
-                    class="flex flex-col mt-4 space-y-8 md:flex-row md:items-center md:mt-0 md:space-y-0 md:space-x-16">
-                    <a href="#" class="block font-medium text-gray-700 hover:text-gray-900 hover:underline">Car
-                        Search</a>
-                    <a href="#" class="block font-medium text-gray-700 hover:text-gray-900 hover:underline">How it
-                        works!</a>
-                    <a href="#" class="block font-medium text-gray-700 hover:text-gray-900 hover:underline">Why us?</a>
-                    <a href="#" class="block font-medium text-gray-700 hover:text-gray-900 hover:underline">Contact</a>
-                    <%= link_to new_user_registration_path, class:"flex items-center px-5 py-3 font-medium tracking-wide text-center text-white capitalize bg-blue-600 rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500"  do %>
+                <div class="flex flex-col mt-4 space-y-8 md:flex-row md:items-center md:mt-0 md:space-y-0 md:space-x-16">
+                    <%= link_to new_user_registration_path, class:"flex items-center px-5 py-3 font-medium tracking-wide text-center text-white capitalize bg-red-400 rounded hover:bg-red-300 focus:outline-none focus:bg-red-300"  do %>
                         S'inscrire
                     <% end %>
-                    <%= link_to new_user_session_path, class:"flex items-center px-5 py-3 font-medium tracking-wide text-center text-white capitalize bg-blue-600 rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500"  do %>
+                    <%= link_to new_user_session_path, class:"flex items-center px-5 py-3 font-medium tracking-wide text-center text-white capitalize bg-blue-500 rounded hover:bg-blue-400 focus:outline-none focus:bg-blue-400"  do %>
                         Se connecter
                     <% end %>
                 </div>
@@ -104,8 +95,8 @@
                 </div>
             </div>
             <div class="flex items-center justify-center w-full md:w-1/2">
-                <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80"
-                    alt="car photo" class="w-full h-full max-w-2xl rounded" />
+            <%= image_tag("img-bac.png", alt:'le bac 2021', class:"w-full h-full max-w-2xl rounded" ) %>
+                
             </div>
         </div>
     </div>
@@ -148,8 +139,7 @@
     <div class="container px-6 py-10 mx-auto md:py-16">
         <div class="flex flex-col space-y-6 md:flex-row md:items-center md:space-x-6">
             <div class="flex items-center justify-center w-full md:w-1/2">
-                <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80"
-                    alt="car photo" class="w-full h-full max-w-2xl rounded" />
+                <%= image_tag('small_success.png', alt:"le bac en joie", class:"w-full h-full max-w-2xl rounded") %>
             </div>
             <div class="w-full md:w-1/2">
                 <div class="max-w-md mx-auto">
@@ -227,7 +217,7 @@
     <footer class="bg-gray-100">
         <div class="container flex flex-col items-center justify-between px-6 py-3 mx-auto sm:flex-row">
             <a href="#" class="text-xl text-gray-800 font-semiblod md:text-3xl hover:text-gray-700">
-                Brand
+                lnclass
             </a>
             <p class="font-medium text-gray-800">example@example.example</p>
         </div>
