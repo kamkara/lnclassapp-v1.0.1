@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="items-center hidden md:flex">
-                <div class="flex flex-col mt-4 space-y-8 md:flex-row md:items-center md:mt-0 md:space-y-0 md:space-x-16">
+                <div class="flex flex-col  space-y-8 md:flex-row md:items-center md:mt-0 md:space-y-0 md:space-x-16">
                     <%= link_to new_user_registration_path, class:"flex items-center px-5 py-3 font-medium tracking-wide text-center text-white capitalize bg-red-400 rounded hover:bg-red-300 focus:outline-none focus:bg-red-300"  do %>
                         S'inscrire
                     <% end %>
@@ -36,7 +36,7 @@
             <div class="w-full md:w-1/2">
                 <div class="max-w-lg">
                     <h1 class="text-2xl font-medium tracking-wide text-gray-800 md:text-4xl">
-                        Un BAC  de type APC chaque lundi matin et nous devoilons le corrigé avec les astuces le vendredi soir.
+                        Un BAC  de type APC chaque lundi matin et le corrigé avec les astuces le vendredi soir.
                     </h1>
                     <p class="mt-2 text-gray-600">
                         Nous sommes votre compagnons pour valider le bac.
@@ -64,7 +64,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M5 13l4 4L19 7"></path>
                             </svg>
-                            <span>Partagez les sujets interessant avec les autres.</span>
+                            <span>Vous avez des sujets, Partagez les sujets avec les autres.</span>
                         </div>
                         <div class="flex items-center space-x-6 text-gray-800">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -74,8 +74,10 @@
                             </svg>
                             <span>Des profs disponible pour repondre a vos questions</span>
                         </div>
-                        <div class="flex items-center space-x-6 text-gray-800">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        <!-- 
+                            
+                            <div class="flex items-center space-x-6 text-gray-800">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor" class="w-5 h-5">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M5 13l4 4L19 7"></path>
@@ -90,6 +92,7 @@
                             </svg>
                             <span>Fast shipping (+ Express)</span>
                         </div>
+                            -->
                     </div>
                 </div>
             </div>
@@ -99,42 +102,26 @@
             </div>
         </div>
     </div>
-    <div class="container px-6 py-10 mx-auto">
-        <h3 class="text-gray-800">1st Chooes your delivery option</h3>
-        <div class="flex items-center mt-5 space-x-6">
+    <div class="container px-6 mx-auto">
+        <h3 class="text-gray-800 ">Rejoingez nous</h3>
+        <div class="flex items-center space-x-6 py-6">
             <button
-                class="flex items-center px-6 py-2 font-medium tracking-wide text-white capitalize bg-blue-600 rounded-full hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-                Standard
+                class="flex items-center px-6 py-2 font-medium tracking-wide text-white bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:bg-red-500">
+                 <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                Oui, Je veux Mon BAC
             </button>
             <button
-                class="flex items-center px-6 py-2 font-medium tracking-wide text-white capitalize bg-gray-600 rounded-full hover:bg-gray-500 focus:outline-none focus:bg-gray-500">
-                Express delivery
-            </button>
-        </div>
-        <div class="grid gap-8 mt-6 sm:grid-cols-2 md:grid-cols-4">
-            <select
-                class="border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                <option>Eqypt</option>
-                <option>Germany</option>
-                <option>US</option>
-            </select>
-            <select
-                class="border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                <option>I20</option>
-                <option>GXR</option>
-                <option>BMW</option>
-            </select>
-            <select
-                class="border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                <option>GTX2020</option>
-                <option>GRE2019</option>
-            </select>
-            <button
-                class="px-4 py-2 font-medium tracking-wide text-white capitalize bg-blue-600 rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-                Search
+                class="flex items-center px-4 py-2 font-medium tracking-wide text-white capitalize bg-blue-600 rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+                </svg>
+                Je me Connecte
             </button>
         </div>
     </div>
+    
     <div class="container px-6 py-10 mx-auto md:py-16">
         <div class="flex flex-col space-y-6 md:flex-row md:items-center md:space-x-6">
             <div class="flex items-center justify-center w-full md:w-1/2">
@@ -143,7 +130,7 @@
             <div class="w-full md:w-1/2">
                 <div class="max-w-md mx-auto">
                     <h1 class="text-2xl font-medium tracking-wide text-gray-800 md:text-4xl">
-                        Why us?
+                        Ensemble vers le BAC
                     </h1>
                     <p class="mt-5 leading-7 text-gray-600">
                         With us you will quickly get the car you want. With our partner
@@ -192,7 +179,7 @@
     </div>
     <div class="max-w-3xl px-6 py-10 mx-auto">
         <h1 class="text-2xl font-medium tracking-wide text-center text-gray-800 md:text-4xl">
-            Contact with us
+            Devenir Professeur Partenaire
         </h1>
         <p class="mt-2 text-center text-gray-600">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -218,7 +205,8 @@
             <a href="#" class="text-xl text-gray-800 font-semiblod md:text-3xl hover:text-gray-700">
                 lnclass
             </a>
-            <p class="font-medium text-gray-800">example@example.example</p>
+            <p class="font-medium text-gray-800">07 599 779 03 (WhatsApp)</p>
+            <p class="font-medium text-gray-800">lnclass.kamkara+siteweb@gmail.com</p>
         </div>
     </footer>
 </div>
