@@ -13,7 +13,7 @@
                 <div class="row">
                     <!-- User first and last name-->
                     <div class="col-xs-6 col-md-6 my-1">
-                        <%= f.text_field :first_name, hide_label: true, class:"form-control input-lg",
+                        <%= f.text_field :first_name, hide_label: true, class:"border border-gray-800 input-lg",
                                 placeholder:"Nom :", autofocus: true %>
                     </div>
                     <div class="col-xs-6 col-md-6 my-1">
@@ -24,11 +24,10 @@
 
                  <!-- user email-->
                 <%= f.email_field :email, id:"studentEmail", hide_label: true, 
-                    class:"form-control input-lg ",placeholder:"Adresse email:",
-                    help:"Pas d'email, Utilise ton N° tel  + @gmail.com." %>
+                    class:"form-control input-lg ",placeholder:"Adresse email:" %>
 
                 <!-- Matricule-->
-                <%= f.text_field :matricule, hide_label: true, class:"form-control input-lg",
+                <%= f.text_field :matricule, hide_label: true, class:"form-control input-lg my-2",
                 placeholder:"N° Matricule National :" %>
 
                 <!-- city-->
@@ -62,19 +61,16 @@
 
                 <!-- Passwword confirm -->
                 <%= f.password_field :password_confirmation, 
-                    hide_label: true, class:"form-control md:input-lg lg:input-lg my-1 ",
+                    hide_label: true, class:"form-control md:input-lg lg:input-lg my-2 mb-2 ",
                     placeholder:"Confirmez votre mot de passe :", 
-                    help:"retaper le mot de passe" %>           
+                    help:"Attention: Ecrit ton mot de passe quelque part dans ton cahier pour ne pas oublié" %>           
                 
 
                 <%= f.hidden_field :role, value:"student" %>
 
-                <!-- Corporate Msg-->
-                <span class="help-block">
-                    En cliquant sur Créer mon compte, votre compte sera créé et vous aurez une semaine offerte.
-                </span>
-                <div class="actions">
-                    <%= f.submit "Créer mon compte", class:"btn btn-lg btn-primary btn-block signup-btn" %>
+               
+                <div class="actions mt-2">
+                    <%= f.submit "Je crée mon compte", class:"btn btn-lg btn-primary btn-block signup-btn" %>
                 </div>
             <% end %>
 
