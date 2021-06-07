@@ -113,6 +113,7 @@ private
     self.last_name          = last_name.strip.squeeze(" ").downcase.capitalize
     self.city               = city.strip.squeeze(" ").downcase.capitalize
     self.school_name        = school_name.strip.squeeze(" ").downcase.capitalize
+    self.referral           = referral.strip.squeeze(" ").downcase.capitalize
   end
   
 end

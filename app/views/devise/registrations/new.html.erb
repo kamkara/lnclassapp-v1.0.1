@@ -56,6 +56,7 @@
 
                  
 
+<<<<<<< HEAD
                 <div class="py-2" x-data="{ show: true }">
                 
                 <div class="relative">
@@ -86,6 +87,16 @@
                   </div>
                 </div>
               </div>
+=======
+                <!-- Passwword confirm -->
+                <%= f.password_field :password_confirmation, 
+                    hide_label: true, class:"form-control md:input-lg lg:input-lg my-1 ",
+                    placeholder:"Confirmez votre mot de passe :", 
+                    help:"retaper le mot de passe" %>           
+                <%= f.text_field :referral, class:'w-full h-12 border border-gray-800 rounded px-3',
+                    hide_label: true, placeholder:"Entrez le code de parrainage",
+                     help:"laisser le champs vide, si vous n'avez pas reçu de code parrainage" %>
+>>>>>>> main
 
                 <%= f.hidden_field :role, value:"student" %>
 

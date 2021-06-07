@@ -1,6 +1,10 @@
 <!-- Home feed-->
 <!-- Home feed -onglet Msg -->
+<<<<<<< HEAD
 <% content_for @title= "Accueil - Plateforme de préparation du BAC" %>
+=======
+<% content_for @title= "Accueil - lnclass" %>
+>>>>>>> main
 <!-- Home feed -onglet Msg -->
 
 <%= render "shared/courses/feed_search" %>
@@ -20,7 +24,8 @@
 			<%= link_to edit_user_registration_path, class:"no-underline" do %>
 				<!-- User Card-->
 				<div class="flex items-center">
-					<img class="w-10 h-10 bg-gray-300 rounded-full mr-2">
+					 <!-- avatar 32X32/!-->
+    				<%= image_tag('ln-icon.png', size: "32x32", :alt => "avatar cours", class:"m-1") %>
 					<div class="text-sm mt-2">
 						<p class="font-bold text-black leading-none capitalize -mt-2"> 
 							<%= course.author %>
