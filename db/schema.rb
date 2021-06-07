@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_27_173656) do
+ActiveRecord::Schema.define(version: 2021_06_07_140746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -144,7 +144,7 @@ ActiveRecord::Schema.define(version: 2021_05_27_173656) do
     t.string "matricule"
     t.uuid "level_id"
     t.uuid "material_id"
-    t.string "class_name"
+    t.string "referral"
     t.date "birthday"
     t.integer "gender"
     t.string "phone_contact"
