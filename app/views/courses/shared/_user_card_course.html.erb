@@ -1,7 +1,8 @@
 
 <!-- User Card for show course-->
 <div class="flex items-center">
-     <img class="w-10 h-10 bg-gray-200 rounded-full mr-2">
+     <!-- avatar 32X32/!-->
+    				<%= image_tag('ln-icon.png', size: "32x32", :alt => "avatar cours", class:"mr-1") %>
 	<div class="text-sm mt-2">
 		<p class="font-bold text-black leading-none capitalize -mt-2"> 
 			<%= @course.author %>
