@@ -40,13 +40,13 @@ validates :phone_contact, :whatsapp_contact,
           numericality: { only_integer: true },
           uniqueness: true
           
-validates_inclusion_of :role, :in => ["City manager", "Marketing", "Head of Content", "Manager", "Content", "Teacher", "Student", "Admin"]
+validates_inclusion_of :role, :in => ["City manager", "Marketing", "Head of Content", "Content", "Student", "Teacher"]
           
           
 ################  CONSTANTE   ###########################
   SCHOOL_NAME = ["LYCEE MODERNE TIASSALE", "COLLEGE SAINT MICHEL TIASSALE", "COLLEGE PRIVE MIXTE UNION TIASSALE", "COLLÈGE NOTRE DAME DE LA PAIX TIASSALE", "COLLÈGE PRIVE LA MANNE", "Autres villes"]
   CITY_NAME   = [ "Tiassalé", "N'Douci", "Agboville", "Divo", "Autres villes"]
-  ROLE_NAME   = ["City manager", "Marketing", "Head of Content", "Content", "Student", "Teacher", "Admin"]
+  ROLE_NAME   = ["City manager", "Marketing", "Head of Content", "Content", "Student", "Teacher"]
   
  def school_name
    self.school_name = "QG LNCLASS"
