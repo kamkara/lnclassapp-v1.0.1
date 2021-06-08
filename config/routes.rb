@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'admin/index'
   get 'tablesclass/index'
   get 'accounted/teachers'
-  get 'accounted/students'
+  get 'accounted/teams'
   get 'profil/index'
   resources :courses do
     resources :posts

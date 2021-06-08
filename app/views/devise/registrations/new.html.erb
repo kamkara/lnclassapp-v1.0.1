@@ -53,6 +53,9 @@
                 <%= f.phone_field :whatsapp_contact, class:"form-control  input-lg my-1 ",
                     placeholder:"N° téléphone WhatsApp :", hide_label: true , 
                     help:"Ajouter votre numéro whatsapp, pas Obligatoire!" %>
+                 <%= f.text_field :referral, class:'w-full h-12 border border-gray-800 rounded px-3',
+                    hide_label: true, placeholder:"Entrez le code de parrainage",
+                     help:"laisser le champs vide, si vous n'avez pas reçu de code parrainage" %>
 
                 <div class="py-2" x-data="{ show: true }">
                 
@@ -84,11 +87,8 @@
                   </div>
                 </div>
               </div>          
-                <%= f.text_field :referral, class:'w-full h-12 border border-gray-800 rounded px-3',
-                    hide_label: true, placeholder:"Entrez le code de parrainage",
-                     help:"laisser le champs vide, si vous n'avez pas reçu de code parrainage" %>
-
-                <%= f.hidden_field :role, value:"student" %>
+               
+              <%= f.hidden_field :role, value:"Student" %>
 
                <small>En cliquant sur créé mon compte, votre compte sera créé et vous bénéficiera de 3 jours d'utilisation gratuite.</small>
                 <div class="actions mt-2">

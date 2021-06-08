@@ -19,17 +19,18 @@ class User < ApplicationRecord
   #CALLBACK
   after_create :assign_user_role
   before_save :user_full_name
-  before_save :assign_school_at_team
   before_save :normalize_fields
+  before_save :school_name
 
+  
 
 
 ######### PRESENTES && FORMAT  ######
 validates :phone_contact,
-          :city, :school_name,
-          :email,  presence: true
-
-validates :last_name, :first_name,
+          :city, :email,
+            presence: true
+validates :password, length: { in: 6..20 }
+validates :last_name, :first_name, 
           presence: true,
           length: { maximum: 30 },
           format: { with: /\A[^0-9`!@#\$%\^&*+_=]+\z/ }
@@ -38,36 +39,24 @@ validates :phone_contact, :whatsapp_contact,
           length: { in: 8..12 },
           numericality: { only_integer: true },
           uniqueness: true
-
-
-############ SLUG ###########
-def slug
-  self.slug = self.full_name
-end
-
-extend FriendlyId
-friendly_id :slug, use: :slugged
-
-def should_generate_new_friendly_id?
-  slug_changed?
-end
-
+          
+validates_inclusion_of :role, :in => ["City manager", "Marketing", "Head of Content", "Manager", "Content", "Teacher", "Student", "Admin"]
+          
+          
 ################  CONSTANTE   ###########################
-CLASSROOM   = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
-SCHOOL_NAME = ["LYCEE MODERNE TIASSALE", "COLLEGE SAINT MICHEL TIASSALE", "COLLEGE PRIVE MIXTE UNION TIASSALE", "COLLÈGE NOTRE DAME DE LA PAIX TIASSALE", "COLLÈGE PRIVE LA MANNE", "Autres villes"]
-CITY_NAME       = [ "Tiassalé", "N'Douci", "Agboville", "Divo", "Autres villes"]
-ROLE        = ["student", "teacher", "Admin"]
-
-
+  SCHOOL_NAME = ["LYCEE MODERNE TIASSALE", "COLLEGE SAINT MICHEL TIASSALE", "COLLEGE PRIVE MIXTE UNION TIASSALE", "COLLÈGE NOTRE DAME DE LA PAIX TIASSALE", "COLLÈGE PRIVE LA MANNE", "Autres villes"]
+  CITY_NAME   = [ "Tiassalé", "N'Douci", "Agboville", "Divo", "Autres villes"]
+  ROLE_NAME   = ["City manager", "Marketing", "Head of Content", "Content", "Student", "Teacher", "Admin"]
+  
+ def school_name
+   self.school_name = "QG LNCLASS"
+ end 
+########### role default value= STUDENT  ######
 def student_matricule
-  ########### role default value= STUDENT  ######
-  if self.role === "student"
+  if self.role === "Student"
     validates :matricule, uniqueness: true, length: { is: 9 }
-  elsif self.role === "teacher" || self.role === "city manager" || self.role === "team"
-    validates :email, uniqueness: true
   end
 end
-
 
 
 ################  SIGN IN PHONE NUMBR OR EMAIL  ###########################
@@ -85,26 +74,22 @@ def self.find_for_database_authentication(warden_conditions)
   end
 end
 
-private
-  # User role {dafault role is student}
-  def assign_user_role
-      add_role(:teacher) if self.matricule == "" && self.role == "teacher"
-      add_role(:city_manager) if self.matricule == "" && self.role == "city_manager"
-      add_role(:admin) if self.matricule == "" && self.role == "team"
-      self.save!
+# User role {dafault role is student}
+def assign_user_role
+  add_role(:Teacher) if self.matricule == "" && self.role == "Teacher"
+  add_role(:City_manager) if self.matricule == "" && self.role == "City Manager"
+  add_role(:Marketing) if self.matricule == "" && self.role == "Marketing"
+  add_role(:Head_of_Content) if self.matricule == "" && self.role == "Head of Content"
+  add_role(:Content) if self.matricule == "" && self.role == "Content"
+  add_role(:Admin) if self.matricule == "" && self.role == "Admin"
+  self.save!
   end
-
-  #require uniqueness matricule for students and email  
   
-    
-
   def user_full_name
     self.full_name = "#{self.first_name} #{self.last_name}"
   end
 
-  def assign_school_at_team
-    self.school_name ="QH LNCLASS" unless self.role == "team"
-  end
+  
 
   def normalize_fields
     self.phone_contact      = phone_contact.strip.squeeze(" ")
@@ -112,8 +97,18 @@ private
     self.first_name         = first_name.strip.squeeze(" ").downcase.capitalize
     self.last_name          = last_name.strip.squeeze(" ").downcase.capitalize
     self.city               = city.strip.squeeze(" ").downcase.capitalize
-    self.school_name        = school_name.strip.squeeze(" ").downcase.capitalize
-    #self.referral           = referral.strip.squeeze(" ").downcase.capitalize
   end
   
+  
+  ############ SLUG ###########
+  def slug
+    self.slug = self.full_name
+  end
+  
+  extend FriendlyId
+  friendly_id :slug, use: :slugged
+  
+  def should_generate_new_friendly_id?
+    slug_changed?
+  end
 end
