@@ -34,7 +34,7 @@ gem "tailwindcss-rails", "~> 0.3.3"
 
 ################  Forms ###############
 gem 'bootstrap_form', '~> 4.5'
-
+gem 'slim', '~> 4.1'
 
 ################  slugging ###############
 
