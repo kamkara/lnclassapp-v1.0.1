@@ -46,7 +46,7 @@ validates_inclusion_of :role, :in => ["City manager", "Marketing", "Head of Cont
 ################  CONSTANTE   ###########################
   SCHOOL_NAME = ["LYCEE MODERNE TIASSALE", "COLLEGE SAINT MICHEL TIASSALE", "COLLEGE PRIVE MIXTE UNION TIASSALE", "COLLÈGE NOTRE DAME DE LA PAIX TIASSALE", "COLLÈGE PRIVE LA MANNE", "Autres villes"]
   CITY_NAME   = [ "Tiassalé", "N'Douci", "Agboville", "Divo", "Autres villes"]
-  ROLE_NAME   = ["City manager", "Marketing", "Head of Content", "Content"]
+  ROLE_NAME   = ["City manager", "Marketing", "Head of Content", "Content", "Head of Content"]
   
  def school_name
    self.school_name = "QG LNCLASS"
