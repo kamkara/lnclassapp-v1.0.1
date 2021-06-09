@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+ 
   get 'admin/index'
   get 'tablesclass/index'
   get 'accounted/teachers'
@@ -21,5 +22,13 @@ Rails.application.routes.draw do
   match "/404", to: "errors#not_found", via: :all
   match "/422", to: "errors#unacceptable", via: :all
   match "/500", to: "errors#internal_server_error", via: :all
+  get 'pages/contact'
+
+
+  get "/robots.:format", to: "pages#robots"
+  get '/sitemap.xml' => 'sitemaps#index', defaults: { format: 'xml' }
+
+  get "contact", to: "pages#contact"
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
