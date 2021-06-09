@@ -40,7 +40,7 @@ validates :phone_contact, :whatsapp_contact,
           numericality: { only_integer: true },
           uniqueness: true
           
-validates_inclusion_of :role, :in => ["City manager", "Marketing", "Head of Content", "Content", "Student", "Teacher"]
+validates_inclusion_of :role, :in => ["City manager", "Marketing", "Head of City Manager", "Content", "Head of Content"]
           
           
 ################  CONSTANTE   ###########################
