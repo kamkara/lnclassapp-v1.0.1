@@ -35,7 +35,7 @@
       <div id="display_post" id="readMore">
         <%= render @course.posts %>
       </div>
-        <%= if current_user.role != "Student" %>
+        <% if current_user.role != "Student" %>
         <div class="post_form">
           <%= render "posts/form" %>
         </div>
@@ -50,7 +50,7 @@
           </div>
         <% end %>
       </div>
-      <%= if current_user.role == "Student" %>
+      <% if current_user.role == "Student" %>
         <!-- Message form-->
         <div class="massege_form">
           <%= render "messages/form" %>
