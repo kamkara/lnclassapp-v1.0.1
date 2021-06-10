@@ -13,7 +13,10 @@ Rails.application.routes.draw do
   root to:'homes#index'
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
+  
+  
   devise_scope :user do
+    get 'users/edit', :to => 'devise/registrations#edit', :as => :user_root
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

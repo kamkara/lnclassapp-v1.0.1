@@ -10,6 +10,10 @@ class TablesclassController < ApplicationController
     @NmbrePosts    =Post.all
     @NmbreMessages = Message.all
     @NmbreUsers    = User.all
+    @NmbreDailyCourses = Course.where(:created_at => 1.day.ago..Time.now)
+    @NmbreDailyMessages = Message.where(:created_at => 1.day.ago..Time.now)
+    @NmbreDailyPosts = Post.where(:created_at => 1.day.ago..Time.now)
+    @NmbreDailyUsers = User.where(:created_at => 1.day.ago..Time.now)
   end
 
 private

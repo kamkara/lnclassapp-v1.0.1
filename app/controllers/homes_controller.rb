@@ -9,17 +9,7 @@ class HomesController < ApplicationController
     @courses   = Course.all.order('created_at desc')
   end
 
-  def bepec
-    
-  end
-
-  def bac_a
-    
-  end
-
-  def bac_d
-
-  end
+  
 
   private
     def find_levels
