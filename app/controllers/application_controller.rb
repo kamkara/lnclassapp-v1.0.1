@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 before_action :store_user_location!, if: :storable_location?
   # as `authenticate_user!` (or whatever your resource is) will halt the filter chain and redirect 
   # before the location can be stored.
-before_action :authenticate_user!
+
 
 private
 # - The request is an Ajax request as this can lead to very unexpected behaviour.
