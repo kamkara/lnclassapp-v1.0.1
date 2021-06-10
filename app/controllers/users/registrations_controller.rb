@@ -5,10 +5,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :find_levels
   #before_action :find_citytowns
 
-    #Edit profite
-    def after_update_path_for(resource)
-      user_path(resource)
-    end
   
   # DELETE /resource
   def destroy
