@@ -1,7 +1,7 @@
 <%= form_with(model:[@course, @course.posts.build], remote:true) do |f| %>
   
   <div class="field">
-    <%= f.rich_text_area :content %>
+    <%= f.rich_text_area :content ,  placeholder: "Ecrivez votre contenu" %>
   </div>
 
   <div class="actions my-2">
