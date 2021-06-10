@@ -7,6 +7,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   
   
+  # DELETE /resource
+  def destroy
+    resource.soft_delete
+    Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
+    set_flash_message :notice, :destroyed
+    yield resource if block_given?
+    respond_with_navigational(resource){ redirect_to after_sign_out_path_for(resource_name) }
+  end
   protected
   # If you have extra params to permit, append them to the sanitizer.
     def configure_permitted_parameters
@@ -18,7 +26,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
         devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
         devise_parameter_sanitizer.permit :account_update, keys: added_attrs
     end
-    
 
   private
     #enable material
