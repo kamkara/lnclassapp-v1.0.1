@@ -35,10 +35,11 @@
       <div id="display_post" id="readMore">
         <%= render @course.posts %>
       </div>
-
-      <div class="post_form">
-        <%= render "posts/form" %>
-      </div>
+        <%= if current_user.role != "Student" %>
+        <div class="post_form">
+          <%= render "posts/form" %>
+        </div>
+      <% end %>
 
       <!-- Message-->
       <div id="display_message" >
@@ -49,10 +50,13 @@
           </div>
         <% end %>
       </div>
-      <!-- Message form-->
-      <div class="massege_form">
-        <%= render "messages/form" %>
-      </div>
+      <%= if current_user.role == "Student" %>
+        <!-- Message form-->
+        <div class="massege_form">
+          <%= render "messages/form" %>
+        </div>      
+      <% end %>
+      
 
     </div>
   </div>
