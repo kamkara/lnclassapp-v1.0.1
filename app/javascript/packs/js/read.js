@@ -14,4 +14,7 @@ $(document).ready(function() {
         $(this).siblings(".addText").contents().unwrap();
         $(this).remove();
     });
+
+
+    
 });
