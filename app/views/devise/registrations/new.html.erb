@@ -4,8 +4,11 @@
     <div class="row">
         <div class="col-12 col-md-6 offset-md-3">
             <span class="items-center">
-                <legend>Inscription</legend>
-                <h4 class="font-semibold mb-2">Inscrivez-vous gratuitement, C'est simple, remplissez seulement les champs.</h4>
+              <legend>Inscription</legend>
+              <h4 class="font-semibold mb-2">Inscrivez-vous gratuitement, <br>C'est simple, remplissez seulement les champs. </h4>
+              <span class="mb-6">
+               Si tu as déja inscrit(e) avant, alors cliquez <%= link_to 'ici pour se connecter', new_user_session_path, class:"text-blue-400 underline font-bold-200 " %>
+               </span>
             </span>
 
             <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
