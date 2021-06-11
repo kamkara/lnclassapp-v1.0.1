@@ -45,8 +45,13 @@ validates_inclusion_of :role, :in => ["City manager", "Marketing", "Head of City
           
 ################  CONSTANTE   ###########################
   SCHOOL_NAME = ["LYCEE MODERNE TIASSALE", "COLLEGE SAINT MICHEL TIASSALE", "COLLEGE PRIVE MIXTE UNION TIASSALE", "COLLÈGE NOTRE DAME DE LA PAIX TIASSALE", "COLLÈGE PRIVE LA MANNE", "Autres villes"]
-  CITY_NAME   = [ "Tiassalé", "N'Douci", "Agboville", "Divo", "Autres villes"]
+
   ROLE_NAME   = ["City manager", "Marketing", "Head of City Manager", "Content", "Head of Content"]
+  CITY_NAME   = ["Tiassalé", "N'Douci","Agboville","Abidjan", "Divo", "Odienné", "Duékoué", "Danané", "Tingréla", "Bouaké", "Daloa", "Yamoussoukro", "San-Pédro", "Abengourou", "Man", "Gagnoa", "Katiola",
+                "Korhogo", "Dabou", "Divo","Grand-Bassam", "Bouaflé", "Issia", "Sinfra",  "Abengourou" ,"Soubré", 
+                "Adzopé", "Séguéla", "Bondoukou", "Oumé", "Ferkessedougou", "Dimbokro",
+                "Guiglo", "Boundiali", "Agnibilékrou", "Daoukro", "Vavoua", "Zuénoula", "Toumodi", "Akoupé", "Lakota", "Autres villes"]
+
   
  def school_name
    self.school_name = "QG LNCLASS"
