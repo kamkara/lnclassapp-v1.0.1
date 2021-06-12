@@ -6,9 +6,11 @@ class MaterialsController < ApplicationController
   def index
     @materials = Material.all
   end
-
+  
   # GET /materials/1 or /materials/1.json
   def show
+    @materials = Material.all
+    @courses = Course.where('material_id = ?', @material.id).order('created_at DESC')
   end
 
   # GET /materials/new
