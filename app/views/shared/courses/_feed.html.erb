@@ -36,7 +36,7 @@
 			<% end %>
 			<!-- Course card-->
 			<%= link_to course_path(course), class: " text-black no-underline hover:text-black hover:no-underline" do %>
-				<div class="container mb-2">
+				<div class="container mb-2 -mx-8">
 					<!-- course content-->
 					<%= truncate(strip_tags(course.content.to_s.html_safe), length: 700) %>
 					<!-- More option-->

@@ -43,12 +43,11 @@
 
       <!-- Message-->
       <div id="display_message" >
-        <%= link_to course_message_path(@course), class:"text-black no-underline hover:text-black hover:no-underline" do %>
+        
           <div class="container mb-2" id="readMore">
             <%= render @course.messages %>
            
           </div>
-        <% end %>
       </div>
       <% if current_user.role == "Student" %>
         <!-- Message form-->
