@@ -1,13 +1,24 @@
-<% content_for @title= @material.title %>
 
-<div class="container-fluid md:mt-20">
-<!-- material title/!-->
-  <div class="container">
-    <h1 class="text-center font-semibold">
-      Special <%= @material.title %>
-    </h1>
+<% content_for @title=@material.title %>
+
+<div class="container ">
+  <h1 class="text-center font-semibold">Special <%= @material.title %></h1>
+</div>
+ <hr />
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-12 col-md-2 offset-md-1 col-lg-2">
+    
+    <%= render "shared/courses/sidebar" %>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-6">
+      <!-- feed main/!-->
+      <%= render "shared/courses/feed" %>
+    </div>
+   
   </div>
-  <hr />
+</div>
     
 </div>
 
