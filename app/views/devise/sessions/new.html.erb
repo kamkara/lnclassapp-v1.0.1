@@ -13,7 +13,7 @@
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div  class="space-y-5 mt-5">
       <!-- login-->
-      <%= f.text_field :login, class:"w-full h-12 border border-gray-800 rounded px-3", placeholder:"Email ou N° téléphone", hide_label: true %>
+      <%= f.text_field :login, class:"w-full h-10 border border-gray-800 rounded px-3", placeholder:"N° téléphone ou Email", hide_label: true %>
       
       <!-- Pwd-->
      <div class="py-2" x-data="{ show: true }">
