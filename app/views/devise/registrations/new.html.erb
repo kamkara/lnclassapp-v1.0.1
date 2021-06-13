@@ -36,7 +36,7 @@
                 <!-- city-->
                 <div class="options md:flex text-sm items-center text-gray-700 mb-2 ">    
                     <%= f.select :city, User::CITY_NAME, label: "Ville:", label_class:"font-semibold",
-                    wrapper: {class:"md:w-1/2 border border-gray-200 focus:outline-none focus:border-gray-500"}, help:"choisie la ville de frequentation" %>
+                    wrapper: {class:"md:w-1/2 border border-gray-200 focus:outline-none focus:border-gray-500"},placeholder:"choissez votre vile:", help:"choisie la ville de frequentation" %>
                     
                     <!-- school name
                     <%= f.select :school_name, User::SCHOOL_NAME, label: "Ecole: ", label_class:"font-semibold",
