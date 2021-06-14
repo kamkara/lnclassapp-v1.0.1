@@ -5,7 +5,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :find_levels
   #before_action :find_citytowns
 
-  
+ 
   # DELETE /resource
   def destroy
     resource.soft_delete
