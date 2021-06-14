@@ -1,0 +1,63 @@
+<div class="container mx-auto px-2 py-2" x-data="{
+            faqs: [
+                {
+                    question: 'Connaitre la plateforme lnclass?',
+                    answer: 'Lnclass est une plateforme numérique qui aide les élèves de la terminale D, A1 et A2 à préparer le BAC dans toutes les matières, même pour les Oraux. Nous avons pour mission de faire 80% de taux de réussite des élèves inscrits sur la plateforme et pour cela, nous faisons alliance avec les professeurs qui enseignent à ses élèves. Nous pensons qu ensemble, nous pourrions donner le sourire à des milliers d élèves jour de la proclamation des résultats.',
+                    isOpen: true,
+                },
+                {
+                    question: 'Avantages pour les élèves?',
+                    answer: 'A travers la plateforme, nous comptons offrir des milliers de sujets avec des corrections que nos partenaires publierons pour tous les élèves et des conseils pratiques. avec tous ces sujets réunir sur la même plateforme, peut être certains exercices ou semblables seront à l examen.',
+                    isOpen: true,
+                },
+                {
+                    question: 'les conditions pour etre Prof Partenaire ?',
+                    answer: 'Normalement l abonnement jusqu au bac est de 3.000F par personne, mais pour chaque élève abonné avec un code de réduction (le code réduction est votre code parrainage) l élève paiera 2.000f soit une réduction de 1.000f. Vous aurez une commission de 400f/ Élèves qui prend un abonnement. Votre travail consiste à sensibiliser les élèves pour l adoption massive de la plateforme. Les professeurs partenaires n ont pas l obligation de mettre  des sujets sur plateforme Lnclass.com, mais nous apprécierons si vous en partagez, votre mission principale est de mobiliser les élèves pour la plateforme. Si vous êtes un groupe de professeurs qui organisent les prépa avec les élèves, alors demandez le code de réduction du groupe pour que tout soit comptabilisé pour le groupe. Vous recevrez la somme totale du vendredi 02 au dimanche 04 juillet 2021 .',
+                    isOpen: true,
+                },
+                {
+                    question: 'Cas pratique: calcul de la remuneration des Prof Partenaire ?',
+                    answer: 'Comme EXEMPLE PRATIQUE:  le professeur partenaire parrainant 500 élèves. La rémunération sera de (500x400fr) soit 200.000fr aussi simple, plus vous avez d élèves parrainné, plus vous gagnez.',
+                    isOpen: true,
+                },
+                {
+                    question: 'les conditions pour etre SuperProf partenaire?',
+                    answer: 'Pour faire partie des Supers Professeurs partenaires, nous demandons que vous publiez plus de 10 sujets et leur corrections sur la plateforme. Les corrections doivent être publiées dans les 72h après la publication des sujets.La rémunération pour les superprofs partenaire est de 50.000fr par matières.Vous recevrez la somme totale du vendredi 02 au dimanche 04 juillet 2021',
+                    isOpen: false,
+                },
+                {
+                    question: 'Exigences des sujets et rémuneration des SuperProf partenaire?',
+                    answer: 'Notez que la correction des sujets sur la plateforme doit être très bien détaillée afin que les élèves aient le moins de problèmes de compréhension. Nous récommandons le modèle corrigé, astuces et piege à éviter ou conseils sur les sujets. Chaque sujets avec corréction récevra un status [ Rouge (Refusé), Vert (Accepté) et Jaune (Pas claire) ].Il est a noté que vous pouvez cumuler ce poste si vous êtes city manager ou professeur partenaire.',
+                    isOpen: false,
+                },
+                {
+                    question: 'Nous récrutons pour le role de city manager?',
+                    answer: 'Annoncez a vos ami(e)s qu’ils peuvent postuler pour le role de CITY MANAGER.Il ou elle coordonnera toutes les activitées de la plateforme dans sa zone.Nous lui attribuerons 200fr sur l’ensemble des abonné de sa zone soit il y’ a 2000 eleves abonnes, sa remuneration sera de 2000x 200fr.pas complication cachée. Pour postuler envoyez-nous un message de presentation avec le nom de la ville via whatsApp au 07 599 779 03. Note: nous recevons assez de message via whatsapp, s’il ne recoit pas de reponse dans les 24h, il peut nous contacter directement par appel le directeur KAMATE VAKARAMOKO ',
+                    isOpen: false,
+                },
+            ]
+        }">
+        
+    <h2 class="text-2xl font-bold">Voir les conditions</h2>
+    <div class="leading-loose text-lg mt-6">
+      <template x-for="faq in faqs" :key="faq.question">
+        <div>
+          <button class="w-full font-bold border-b border-gray-400 py-3 flex justify-between items-center mt-4"
+            @click="faqs = faqs.map(f => ({ ...f, isOpen: f.question !== faq.question ? false : !f.isOpen}))"><!-- Specs has it that only one component can be open at a time and also you should be able to toggle the open state of the active component too -->
+            <div x-text="faq.question"></div>
+            <svg x-show="!faq.isOpen" class="fill-current" viewBox="0 0 24 24" width="24" height="24">
+              <path class="heroicon-ui"
+                d="M12 22a10 10 0 110-20 10 10 0 010 20zm0-2a8 8 0 100-16 8 8 0 000 16zm1-9h2a1 1 0 010 2h-2v2a1 1 0 01-2 0v-2H9a1 1 0 010-2h2V9a1 1 0 012 0v2z" />
+              </svg>
+            <svg x-show="faq.isOpen" class="fill-current" viewBox="0 0 24 24" width="24" height="24">
+              <path class="heroicon-ui"
+                d="M12 22a10 10 0 110-20 10 10 0 010 20zm0-2a8 8 0 100-16 8 8 0 000 16zm4-8a1 1 0 01-1 1H9a1 1 0 010-2h6a1 1 0 011 1z" />
+              </svg>
+          </button>
+
+          <div class="text-gray-700 text-sm mt-2" x-text="faq.answer" x-show="faq.isOpen"></div>
+        </div>
+      </template>
+
+    </div>
+  </div>
