@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'accounted/superprofs'
   get 'accounted/managers'
   get 'accounted/teams'
+  get 'accounted/members'
   get 'profil/index'
   resources :courses do
     resources :posts

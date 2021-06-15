@@ -1,6 +1,6 @@
 class AccountedController < ApplicationController
   
-  before_action :find_levels, only: [:teams]
+  before_action :find_levels
   before_action :find_materials#, only: [:teachers, :cityManagers, :SuperProfs, :teams ]
 
   def teachers
@@ -13,6 +13,9 @@ class AccountedController < ApplicationController
   def teams
   end
 
+  def members
+    
+  end
   
   
   private

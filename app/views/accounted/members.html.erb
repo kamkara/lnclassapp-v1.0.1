@@ -1,5 +1,4 @@
-<%= content_for @title=" Inscription Super-prof" %>
-
+<%= content_for @title=" Inscription Professeur" %>
 <div class="container" id="wrap">
     <div class="row">
         <div class="col-12 col-md-6 offset-md-3">
@@ -11,12 +10,12 @@
             <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
               <div x-data="members()" x-cloak>
 				<div class="max-w-3xl mx-auto px-4 py-10">	
-					<%= render "accounted/shared/prof_transition" %>
+					<%= render "accounted/shared/transition" %>
 					<%= render "accounted/shared/top_navigation" %>
 
 					<!-- /hide user role -->
                      
-                     <%= f.hidden_field :role, value:"Teacher" %>
+                     <%= f.hidden_field :role, value:"Student" %>
 					<!-- Step Content -->
                     <div class="py-10">	
                         <div x-show.transition.in="step === 1">
@@ -46,20 +45,15 @@
 
 						<!-- step 2-->
 						<div x-show.transition.in="step === 2">
-              <div class="row my-2">
+                            <div class="row my-2">
                                 <!-- User first and last name-->
 								<%= f.select :city, User::CITY_NAME, label: "Ville:", label_class:"font-semibold",
                                              wrapper: {class:"md:w-1/2 block w-full p-2 border rounded border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent"},
-                                             placeholder:"choissez votre vile:", help:"Cliquez pour choisir la ville" %>
-                <%= f.select :material_id, @materials.map { |m| [m.title, m.id] }, label: "Discipline: ", label_class:"font-semibold",
+                                             placeholder:"choissez votre vile:", help:"Clic pour choisir la ville" %>
+                                <%= f.select :level_id, @levels.map { |l| [l.title, l.id] }, label: "Série: ", label_class:"font-semibold",
                                          wrapper: {class:"md:w-1/2 block w-full mt-2 p-2 border rounded border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent"}, 
-                                         help:"Cliquez pour choisir la discipline enseignée" %>
-                
-                <!-- contact-->
-							  <%= f.email_field :email, hide_label: true,
-                  class:"block w-full mt-2 p-2 border rounded border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent ",
-                  placeholder:"adresse email... " %>
-            		</div>
+                                         help:"Clic pour choisir la serie du bac" %>
+            				</div>
 
                             <!-- Mot de passe-->
                             <div class="relative">
@@ -83,10 +77,10 @@
                         <div x-show.transition.in="step === 3">
                             <div class="mb-5">
                             <label for="reduction" class="font-semibold mb-1 text-gray-700 block">As-tu réçu un code de reduction? si oui</label>
-                            <small>Le code réduction permet de compter le nombre d'élèves inscrit grace vous!</small>
+							
 								<%= f.text_field :referral, class:'w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium',
 									hide_label: true, placeholder:"Entrez le code de réduction",
-									help:"Si vous n'avez pas réçu de code, terminer l'inscrition et faite la demande auprès de votre city manager" %>
+									help:"Si vous n'avez pas reçu de code réduction, laissez le champs vide" %>
                             </div>
                         </div>
                         <!-- Bottom Navigation -->	

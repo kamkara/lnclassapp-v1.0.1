@@ -29,24 +29,25 @@ class User < ApplicationRecord
 validates :phone_contact,
           :city, :email,
             presence: true
-validates :password, length: { in: 6..20 }
+validates :password, length: { in: 8..45 }
 validates :last_name, :first_name, 
           presence: true,
-          length: { maximum: 30 },
+          length: { maximum: 50 },
           format: { with: /\A[^0-9`!@#\$%\^&*+_=]+\z/ }
 
-validates :phone_contact, :whatsapp_contact,
-          length: { in: 8..12 },
+validates :phone_contact,
+          length: { in: 10..12 },
           numericality: { only_integer: true },
           uniqueness: true
           
-validates_inclusion_of :role, :in => ["City manager", "Marketing", "Head of City Manager", "Content", "Head of Content", "Teacher", "Student"]
+validates_inclusion_of :role, :in => ["City manager", "Marketing", "Head of City Manager", "Content", "Head of Content", "Teacher", "Student", "Super prof"]
           
           
 ################  CONSTANTE   ###########################
-  SCHOOL_NAME = ["LYCEE MODERNE TIASSALE", "COLLEGE SAINT MICHEL TIASSALE", "COLLEGE PRIVE MIXTE UNION TIASSALE", "COLLÈGE NOTRE DAME DE LA PAIX TIASSALE", "COLLÈGE PRIVE LA MANNE", "Autres villes"]
+  #SCHOOL_NAME = ["LYCEE MODERNE TIASSALE", "COLLEGE SAINT MICHEL TIASSALE", "COLLEGE PRIVE MIXTE UNION TIASSALE", "COLLÈGE NOTRE DAME DE LA PAIX TIASSALE", "COLLÈGE PRIVE LA MANNE", "Autres villes"]
 
-  ROLE_NAME   = ["City manager", "Marketing", "Head of City Manager", "Content", "Head of Content"]
+  ROLE_NAME   = ["City manager", "Marketing", "Head of City Manager", "Content", "Head of Content", "Super prof"]
+  
   CITY_NAME   = ["Tiassalé", "N'Douci","Agboville","Abidjan", "Divo", "Odienné", "Duékoué", "Danané", "Tingréla", "Bouaké", "Daloa", "Yamoussoukro", "San-Pédro", "Abengourou", "Man", "Gagnoa", "Katiola",
                 "Korhogo", "Dabou", "Divo","Grand-Bassam", "Bouaflé", "Issia", "Sinfra",  "Abengourou" ,"Soubré", 
                 "Adzopé", "Séguéla", "Bondoukou", "Oumé", "Ferkessedougou", "Dimbokro",
@@ -98,7 +99,7 @@ def assign_user_role
 
   def normalize_fields
     self.phone_contact      = phone_contact.strip.squeeze(" ")
-    self.whatsapp_contact   = whatsapp_contact.strip.squeeze(" ")
+    #self.whatsapp_contact   = whatsapp_contact.strip.squeeze(" ")
     self.first_name         = first_name.strip.squeeze(" ").downcase.capitalize
     self.last_name          = last_name.strip.squeeze(" ").downcase.capitalize
     self.city               = city.strip.squeeze(" ").downcase.capitalize
