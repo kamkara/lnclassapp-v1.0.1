@@ -40,7 +40,7 @@ validates :phone_contact,
           numericality: { only_integer: true },
           uniqueness: true
           
-validates_inclusion_of :role, :in => ["City manager", "Marketing", "Head of City Manager", "Content", "Head of Content", "Teacher", "Student", "Super prof"]
+validates_inclusion_of :role, :in => ["City Manager", "Marketing", "Head of City Manager", "Content", "Head of Content", "Teacher", "Student", "Super prof"]
           
           
 ################  CONSTANTE   ###########################
