@@ -9,7 +9,8 @@
             </span>
 
             <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-              <div x-data="members()" x-cloak>
+              <%= render "devise/shared/error_messages", resource: resource %>
+			  <div x-data="members()" x-cloak>
 				<div class="max-w-3xl mx-auto px-4 py-10">	
 					<%= render "accounted/shared/prof_transition" %>
 					<%= render "accounted/shared/top_navigation" %>
