@@ -41,12 +41,12 @@
                         <i class="fas fa-user-circle"></i> Resources
                     <% end %>
                 </li>
-            <% elsif current_user.role == "Teacher" %>
+            <% elsif current_user.role == "Teacher" || current_user.role == "Super prof" %>
                 <li class="mr-3 nav-item nav-item_feed active">
-                    <%= link_to tablesclass_index_path, 
+                    <%= link_to admin_index_path,  
                     class: "inline-block text-gray-600 no-underline hover:text-gray-200 
                     hover:text-underline py-2 px-4 m-links nav-link active text-white " do %>
-                        <i class="fas fa-users"></i> TablesClass
+                        <i class="fas fa-users"></i> Espace Prof
                     <% end %>
                 </li>
             <% elsif current_user.role == "Head of Content"|| current_user.role == "City Manager"  || current_user.role == "Content" || current_user.role == "Marketing"|| current_user.role == "Head of City Manager" %>
