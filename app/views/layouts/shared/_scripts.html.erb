@@ -3,7 +3,7 @@
 	//Javascript to toggle the menu
 	document.getElementById('nav-toggle').onclick = function(){
 		document.getElementById("nav-content").classList.toggle("hidden");
-	}
+	} 
     // data on tablesclass dashboard
         function data() {
           
@@ -69,6 +69,7 @@
 			}
 		}
 	</script>
+  <!-- Administration-->
 	<script>
     const adminTheme = () => {
       const getTheme = () => {
@@ -92,27 +93,4 @@
       }
     }
   </script>
- <!-- Administration-->
- <script>
-    const setup = () => {
-      const getTheme = () => {
-        if (window.localStorage.getItem('dark')) {
-          return JSON.parse(window.localStorage.getItem('dark'))
-        }
-        return !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-      }
-
-      const setTheme = (value) => {
-        window.localStorage.setItem('dark', value)
-      }
-
-      return {
-        loading: true,
-        isDark: getTheme(),
-        toggleTheme() {
-          this.isDark = !this.isDark
-          setTheme(this.isDark)
-        },
-      }
-    }
-  </script>
+ 
