@@ -16,7 +16,6 @@
 
 					<!-- /hide user role -->
                      
-                     <%= f.hidden_field :role, value:"City Manager" %>
 					<!-- Step Content -->
                     <div class="py-10">	
                         <div x-show.transition.in="step === 1">
@@ -33,32 +32,27 @@
 										placeholder:"Prénom... " %>
 								</div>
             				</div>
-							<!-- Matricule-->
-							<%= f.text_field :matricule, hide_label: true,
-								class:"block w-full p-2 border rounded border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent ",
-								placeholder:"Matricule national... " %>
+							
 							<!-- contact-->
 							<%= f.text_field :phone_contact, hide_label: true,
 								class:"block w-full mt-2 p-2 border rounded border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent ",
 								placeholder:"N° téléphone 10 chriffres... " %>
 
+							  <%= f.email_field :email, hide_label: true,
+                 				 class:"block w-full mt-2 p-2 border rounded border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent ",
+                 				 placeholder:"adresse email... " %>
                         </div>
 
 						<!-- step 2-->
 						<div x-show.transition.in="step === 2">
-              <div class="row my-2">
+             				 <div class="row my-2">
                                 <!-- User first and last name-->
 								<%= f.select :city, User::CITY_NAME, label: "Ville:", label_class:"font-semibold",
                                              wrapper: {class:"md:w-1/2 block w-full p-2 border rounded border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent"},
-                                             placeholder:"choissez votre vile:", help:"Cliquez pour choisir la ville" %>
-                <%= f.select :material_id, @materials.map { |m| [m.title, m.id] }, label: "Discipline: ", label_class:"font-semibold",
-                                         wrapper: {class:"md:w-1/2 block w-full mt-2 p-2 border rounded border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent"}, 
-                                         help:"Cliquez pour choisir la discipline enseignée" %>
+                                             placeholder:"choissez votre vile:", help:"Cliquez pour choisir votre role" %>
+                				<%= f.select :role, User::ROLE_NAME, label: "Role: ", label_class:"font-semibold",
+                                         wrapper: {class:"md:w-1/2 block w-full mt-2 p-2 border rounded border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent"}%>
                 
-                <!-- contact-->
-							  <%= f.email_field :email, hide_label: true,
-                  class:"block w-full mt-2 p-2 border rounded border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent ",
-                  placeholder:"adresse email... " %>
             		</div>
 
                             <!-- Mot de passe-->
