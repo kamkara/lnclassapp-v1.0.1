@@ -1,0 +1,97 @@
+<%= content_for @title=" Inscription Eléves" %>
+<div class="container" id="wrap">
+    <div class="row">
+        <div class="col-12 col-md-6 offset-md-3">
+            <span class="items-center">
+                <legend>Inscription</legend>
+                <h4 class="font-semibold mb-2">Inscrivez-vous gratuitement, C'est simple.</h4>
+            </span>
+
+            <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <div x-data="members()" x-cloak>
+				<div class="max-w-3xl mx-auto px-4 py-10">	
+					<%= render "accounted/shared/transition" %>
+					<%= render "accounted/shared/top_navigation" %>
+
+					<!-- /hide user role -->
+                     
+                     <%= f.hidden_field :role, value:"Student" %>
+					<!-- Step Content -->
+                    <div class="py-10">	
+                        <div x-show.transition.in="step === 1">
+                            <!-- User first and last name-->
+            				<div class="row my-2">
+                				<!-- User first and last name-->
+								<div class="col-xs-6 col-md-6 my-1">
+									<%= f.text_field :first_name, hide_label: true,
+										class:"block w-full p-2 border rounded border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent ",
+										placeholder:"Nom...", autofocus: true %>
+								</div>
+								<div class="col-xs-6 col-md-6 my-1">
+									<%= f.text_field :last_name, hide_label: true, class:"block w-full p-2 border rounded border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent ",
+										placeholder:"Prénom... " %>
+								</div>
+            				</div>
+							<!-- Matricule-->
+							<%= f.text_field :matricule, hide_label: true,
+								class:"block w-full p-2 border rounded border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent ",
+								placeholder:"Matricule national... " %>
+							<!-- contact-->
+							<%= f.text_field :phone_contact, hide_label: true,
+								class:"block w-full mt-2 p-2 border rounded border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent ",
+								placeholder:"N° téléphone 10 chriffres... " %>
+
+                        </div>
+
+						<!-- step 2-->
+						<div x-show.transition.in="step === 2">
+              <div class="row my-2">
+                                <!-- User first and last name-->
+								<%= f.select :city, User::CITY_NAME, label: "Ville:", label_class:"font-semibold",
+                                             wrapper: {class:"md:w-1/2 block w-full p-2 border rounded border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent"},
+                                             placeholder:"choissez votre vile:", help:"Cliquez pour choisir la ville" %>
+                <%= f.select :level_id, @levels.map { |l| [l.title, l.id] }, label: "Série: ", label_class:"font-semibold",
+                                         wrapper: {class:"md:w-1/2 block w-full mt-2 p-2 border rounded border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent"}, 
+                                         help:"Cliquez pour choisir la serie du bac" %>
+                
+                <!-- contact-->
+							  <%= f.email_field :email, hide_label: true,
+                  class:"block w-full mt-2 p-2 border rounded border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent ",
+                  placeholder:"adresse email... " %>
+            		</div>
+
+                            <!-- Mot de passe-->
+                            <div class="relative">
+                                <!-- password section-->
+								<input type="password" name="user[password]" id="user_password"
+									:type="togglePassword ? 'text' : 'password'"
+									@keydown="checkPasswordStrength()"
+									x-model="password"
+									class="w-full mt-2 p-2 border rounded border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent"
+									placeholder="ton mot de passe...(8 caracteres min)">
+
+								<div class="absolute right-0 bottom-0 top-0 px-3 py-3 cursor-pointer" 
+									@click="togglePassword = !togglePassword">	
+									<svg :class="{'hidden': !togglePassword, 'block': togglePassword }" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-gray-500" viewBox="0 0 24 24"><path d="M12 19c.946 0 1.81-.103 2.598-.281l-1.757-1.757C12.568 16.983 12.291 17 12 17c-5.351 0-7.424-3.846-7.926-5 .204-.47.674-1.381 1.508-2.297L4.184 8.305c-1.538 1.667-2.121 3.346-2.132 3.379-.069.205-.069.428 0 .633C2.073 12.383 4.367 19 12 19zM12 5c-1.837 0-3.346.396-4.604.981L3.707 2.293 2.293 3.707l18 18 1.414-1.414-3.319-3.319c2.614-1.951 3.547-4.615 3.561-4.657.069-.205.069-.428 0-.633C21.927 11.617 19.633 5 12 5zM16.972 15.558l-2.28-2.28C14.882 12.888 15 12.459 15 12c0-1.641-1.359-3-3-3-.459 0-.888.118-1.277.309L8.915 7.501C9.796 7.193 10.814 7 12 7c5.351 0 7.424 3.846 7.926 5C19.624 12.692 18.76 14.342 16.972 15.558z"/></svg>
+
+									<svg :class="{'hidden': togglePassword, 'block': !togglePassword }" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-gray-500" viewBox="0 0 24 24"><path d="M12,9c-1.642,0-3,1.359-3,3c0,1.642,1.358,3,3,3c1.641,0,3-1.358,3-3C15,10.359,13.641,9,12,9z"/><path d="M12,5c-7.633,0-9.927,6.617-9.948,6.684L1.946,12l0.105,0.316C2.073,12.383,4.367,19,12,19s9.927-6.617,9.948-6.684 L22.054,12l-0.105-0.316C21.927,11.617,19.633,5,12,5z M12,17c-5.351,0-7.424-3.846-7.926-5C4.578,10.842,6.652,7,12,7 c5.351,0,7.424,3.846,7.926,5C19.422,13.158,17.348,17,12,17z"/></svg>
+								</div>
+							</div>
+                        </div>
+                        <!-- step 3-->
+                        <div x-show.transition.in="step === 3">
+                            <div class="mb-5">
+                            <label for="reduction" class="font-semibold mb-1 text-gray-700 block">As-tu réçu un code de reduction? si oui</label>
+							
+								<%= f.text_field :referral, class:'w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium',
+									hide_label: true, placeholder:"Entrez le code de réduction",
+									help:"Si vous n'avez pas reçu de code réduction, laissez le champs vide" %>
+                            </div>
+                        </div>
+                        <!-- Bottom Navigation -->	
+                        <%= render "accounted/shared/buttons" %>	
+	                </div>
+                <% end %>
+            </div>
+         </div>
+    </div>
