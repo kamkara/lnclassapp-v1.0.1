@@ -9,7 +9,7 @@
   <%= render "admin/super_profs/index" %>
 <% elsif current_user.role == "City Manager" %>
 <% content_for @title = "Espace city manager" %>
-  <%= render "admin/city_manager/index" %>
+  <%= render "admin/city_managers/index" %>
 <% content_for @title = "Espace administration" %>
 <% elsif current_user.role == "Marketing" %>
   <%= render "admin/marketing/index" %>
