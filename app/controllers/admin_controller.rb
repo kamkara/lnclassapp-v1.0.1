@@ -6,6 +6,7 @@ class AdminController < ApplicationController
   before_action :find_courses
   before_action :find_posts
   before_action :find_messages
+  before_action :find_users
 
   def index
     
@@ -44,5 +45,8 @@ class AdminController < ApplicationController
     end
     def find_messages
       @messages = Message.all
+    end
+    def find_users
+      @users = User.all
     end
 end
