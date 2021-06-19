@@ -1,7 +1,7 @@
 <%= content_for @title=" espace equipe" %>
 
-<div class="container" id="wrap">
-    <div class="row">
+<div class="container">
+    <div class="h-screen">
         <div class="col-12 col-md-6 offset-md-3">
             <span class="items-center">
                 <legend>Inscription</legend>
@@ -9,14 +9,15 @@
             </span>
 
             <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-              <div x-data="members()" x-cloak>
+              <%= render "devise/shared/error_messages", resource: resource %>
+			  <div x-data="members()" x-cloak>
 				<div class="max-w-3xl mx-auto px-4 py-10">	
 					<%= render "accounted/shared/prof_transition" %>
 					<%= render "accounted/shared/top_navigation" %>
 
 					<!-- /hide user role -->
                      
-                     <%= f.hidden_field :role, value:"City Manager" %>
+                     <%= f.hidden_field :role, value:"City Manager" %>43.1
 					<!-- Step Content -->
                     <div class="py-10">	
                         <div x-show.transition.in="step === 1">
@@ -44,16 +45,16 @@
 						<!-- step 2-->
 						<div x-show.transition.in="step === 2">
               <div class="row my-2">
-                                <!-- User first and last name-->
-								<%= f.select :city, User::CITY_NAME, label: "Ville:", label_class:"font-semibold",
-                                             wrapper: {class:"md:w-1/2 block w-full p-2 border rounded border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent"},
-                                             placeholder:"choissez votre vile:", help:"Cliquez pour choisir la ville" %>
+                <!-- User first and last name-->
+				<%= f.select :city, User::CITY_NAME, label: "Ville:", label_class:"font-semibold",
+                        wrapper: {class:"md:w-1/2 block w-full p-2 border rounded border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent"},
+                        placeholder:"choissez votre vile:", help:"Cliquez pour choisir la ville" %>
                 <%= f.select :material_id, @materials.map { |m| [m.title, m.id] }, label: "Discipline: ", label_class:"font-semibold",
                                          wrapper: {class:"md:w-1/2 block w-full mt-2 p-2 border rounded border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent"}, 
                                          help:"Cliquez pour choisir la discipline enseignée" %>
                 
                 <!-- contact-->
-							  <%= f.email_field :email, hide_label: true,
+				<%= f.email_field :email, hide_label: true,
                   class:"block w-full mt-2 p-2 border rounded border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent ",
                   placeholder:"adresse email... " %>
             		</div>
