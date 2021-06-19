@@ -1,6 +1,7 @@
 
 <%= content_for @title=" Inscription Eleves" %>
 <div class="container" id="wrap">
+
     <div class="row">
         <div class="col-12 col-md-6 offset-md-3">
             <span class="items-center">
@@ -13,9 +14,8 @@
                 <div class="row">
                     <!-- User first and last name-->
                     <div class="col-xs-6 col-md-6 my-1">
-                       <%= f.text_field :first_name, hide_label: true,
-										class:"block w-full p-2 border rounded border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent ",
-										placeholder:"Nom...", autofocus: true %>
+                       <%= f.text_field :first_name, hide_label: true, class:"block w-full p-2 border rounded border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent ",
+						placeholder:"Nom...", autofocus: true %>
                     </div>
                     <div class="col-xs-6 col-md-6 my-1">
                         <%= f.text_field :last_name, hide_label: true, class:"block w-full p-2 border rounded border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent ",
