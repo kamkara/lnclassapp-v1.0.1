@@ -9,7 +9,7 @@ class TablesclassController < ApplicationController
     @NmbreCourses  = Course.all
     @NmbrePosts    =Post.all
     @NmbreMessages = Message.all
-    @NmbreUsers    = User.all
+    @NmbreUsers    = User.all.order('created_at desc')
     @NmbreDailyCourses = Course.where(:created_at => 1.day.ago..Time.now)
     @NmbreDailyMessages = Message.where(:created_at => 1.day.ago..Time.now)
     @NmbreDailyPosts = Post.where(:created_at => 1.day.ago..Time.now)

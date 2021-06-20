@@ -17,7 +17,7 @@ class AdminController < ApplicationController
     @NmbreDailyCourses  = Course.where(:created_at => 1.day.ago..Time.now)
     @NmbreDailyMessages = Message.where(:created_at => 1.day.ago..Time.now)
     @NmbreDailyPosts    = Post.where(:created_at => 1.day.ago..Time.now)
-    @NbDailyUsers       = User.where(:created_at => 1.day.ago..Time.now)
+    @NbDailyUsers       = User.where(:created_at => 1.day.ago..Time.now).order("created_at desc")
     @NbDailyUsersByCity = User.where(:created_at => 1.day.ago..Time.now)
     @StudentsByCity        = User.where("city= ?  AND :role= ?", current_user.city, "Student")
     @ProfsByCity        = User.where("city= ?  AND :role= ?", current_user.city, "Teacher")
