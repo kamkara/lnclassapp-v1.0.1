@@ -12,5 +12,6 @@
   <%= render "admin/city_managers/index" %>
 <% content_for @title = "Espace administration" %>
 <% elsif current_user.role == "Marketing" %>
+<% content_for @title = "Espace administration" %>
   <%= render "admin/marketing/index" %>
 <% end %>
