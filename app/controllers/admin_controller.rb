@@ -15,12 +15,13 @@ class AdminController < ApplicationController
     @NmbreMessages      = Message.all
     @NmbreUsers         = User.all.order("created_at desc")
     @NmbreDailyCourses  = Course.where(:created_at => 1.day.ago..Time.now)
-    @NmbreDailyMessages = Message.where(:created_at => 1.day.ago..Time.now)
+    @DailyMessages      = Message.where(:created_at => 1.day.ago..Time.now).order("created_at desc")
     @NmbreDailyPosts    = Post.where(:created_at => 1.day.ago..Time.now)
     @NbDailyUsers       = User.where(:created_at => 1.day.ago..Time.now ).order("created_at desc")
-    @NbDailyUsersByCity = @NbDailyUsers.where("role= ?", "Student")
+    @NbDailyStutents       = @NbDailyUsers.where("role= ?", "Student")
     @DailyUsers         = User.where(:current_sign_in_at => 1.day.ago..Time.now)
   end
+  #@NbDailyUsersByCity = @NbDailyUsers.where("role= ?", "Student")
   #@StudentsByCity        = User.where("city= ?  AND :role= ?", current_user.city, "Student")
   ##@DailyUsersByCity   = User.where("create_at= ?  AND :city=?", "1.day.ago..Time.now",  current_user.city)
   #@ProfsByCity        = User.where("city= ?  AND :role= ?", current_user.city, "Teacher")

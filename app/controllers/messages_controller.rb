@@ -22,6 +22,7 @@ class MessagesController < ApplicationController
   def create
     @message = @course.messages.create(message_params)
     @message.user_id = current_user.id
+    @message.author = current_user.full_name
 
     respond_to do |format|
       if @message.save
