@@ -9,14 +9,12 @@
           <span class="text-gray-500 dark:text-gray-400 font-normal block">@MissionBac</span>
         </div>
       </div>
-     
     </div>
-				<div class="container mb-2">
-					<!-- meassage content-->
-					<%= message.content.to_s.html_safe %>
-				</div>
+			<div class="mb-2">
+			  <!-- meassage content-->
+				<%= message.content.to_s.html_safe %>
+			</div>
     <div class="border-gray-200 dark:border-gray-600 border border-b-0 my-1"></div>
-<%= render "/messages/features" %>
-
-  </div>
+      <%= render "/messages/features" %>
+    </div>
 </div>

@@ -1,10 +1,10 @@
 <%= form_with(model: [@course, @course.messages.build], remote: true) do |f| %>
   
   <div class="field">
-    <%= f.rich_text_area :content, placeholder: "Ecrivez votre contenu" %>
+    <%= f.rich_text_area :content, placeholder: "Ecrivez votre contenu d'echange" %>
   </div>
 
   <div class="actions my-2">
-    <%= f.submit "Echange", class:"inline-block px-6 py-2 text-xs font-medium leading-6 text-center text-white uppercase transition bg-blue-700 rounded shadow ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none" %>
+    <%= f.submit "Echangez", class:"inline-block px-6 py-2 text-xs font-medium leading-6 text-center text-white uppercase transition bg-blue-700 rounded shadow ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none" %>
   </div>
 <% end %>

@@ -13,18 +13,18 @@ class AdminController < ApplicationController
     @Nb_sujets          = Course.all
     @NmbrePosts         =Post.all
     @NmbreMessages      = Message.all
-    @NmbreUsers         = User.all
+    @NmbreUsers         = User.all.order("created_at desc")
     @NmbreDailyCourses  = Course.where(:created_at => 1.day.ago..Time.now)
     @NmbreDailyMessages = Message.where(:created_at => 1.day.ago..Time.now)
     @NmbreDailyPosts    = Post.where(:created_at => 1.day.ago..Time.now)
-    @NbDailyUsers       = User.where(:created_at => 1.day.ago..Time.now).order("created_at desc")
-    @NbDailyUsersByCity = User.where(:created_at => 1.day.ago..Time.now)
-    @StudentsByCity        = User.where("city= ?  AND :role= ?", current_user.city, "Student")
-    @ProfsByCity        = User.where("city= ?  AND :role= ?", current_user.city, "Teacher")
-    @SuperProfsByCity   = User.where("city= ?  AND :role= ?", current_user.city, "Super prof")
-    @DailyUsersByCity   = User.where("create_at= ?  AND :city=?", "1.day.ago..Time.now",  current_user.city)
+    @NbDailyUsers       = User.where(:created_at => 1.day.ago..Time.now ).order("created_at desc")
+    @NbDailyUsersByCity = @NbDailyUsers.where("role= ?", "Student")
     @DailyUsers         = User.where(:current_sign_in_at => 1.day.ago..Time.now)
   end
+  #@StudentsByCity        = User.where("city= ?  AND :role= ?", current_user.city, "Student")
+  ##@DailyUsersByCity   = User.where("create_at= ?  AND :city=?", "1.day.ago..Time.now",  current_user.city)
+  #@ProfsByCity        = User.where("city= ?  AND :role= ?", current_user.city, "Teacher")
+  #@SuperProfsByCity   = User.where("city= ?  AND :role= ?", current_user.city, "Super prof")
 
   private
   #enable material

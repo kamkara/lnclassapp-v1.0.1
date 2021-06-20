@@ -32,29 +32,18 @@
 
     <!-- Post-->
     <div class="col-12 col-md-6 col-lg-6">
-      <div id="display_post" id="readMore">
-        <%= render @course.posts %>
-      </div>
-        <% if current_user.role != "Student" %>
-        <div class="post_form">
-          <%= render "posts/form" %>
-        </div>
-      <% end %>
-
+     
       <!-- Message-->
       <div id="display_message" >
-        
-          <div class="container mb-2" id="readMore">
+          <div class="mb-2" id="readMore">
             <%= render @course.messages %>
-           
           </div>
       </div>
-      <% if current_user.role == "Student" %>
         <!-- Message form-->
         <div class="massege_form">
           <%= render "messages/form" %>
         </div>      
-      <% end %>
+      
       
 
     </div>
