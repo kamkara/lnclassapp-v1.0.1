@@ -30,7 +30,7 @@
 							<!-- contact-->
 							<%= f.text_field :phone_contact, hide_label: true,
 								class:"block w-full mt-2 p-2 border rounded border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent ",
-								placeholder:"N° téléphone 10 chriffres... " %>
+								placeholder:"N° téléphone 10 chriffres... ", id:"phone_contact" %>
             
                 <div class="row my-2">
                     <!-- User first and last name-->
@@ -58,6 +58,7 @@
 								
 							</div>
               <%= f.hidden_field :role, value:"Student" %>
+              
 
                <small>Cliquez sur créé mon compte, pour terminer votre inscription.</small>
                 <div class="actions mt-2">
