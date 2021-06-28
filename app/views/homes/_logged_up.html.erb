@@ -25,7 +25,7 @@
                 <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                Inscription Elève
+                Inscription élève
             <% end %>
             <%= link_to new_user_session_path, class:"flex items-center px-4 py-2 font-medium tracking-wide text-white capitalize bg-blue-600 rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500" do %>
                 <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -42,12 +42,15 @@
             <div class="w-full md:w-1/2">
                 <div class="max-w-lg"> 
                     <h1 class="text-2xl font-medium tracking-wide text-gray-800 md:text-4xl">
-                    Les prépa Oral organisé par les profs qui vont vous interrogez au BAC pour vous faciliter encore le BAC
-                       
+                   Vous trouverez ici des sujets probables au BAC 2021.
                     </h1>
+                <p class="">Avec leurs corrigés dans votre espace personnel. <br /></p> 
+                <p class="">Abonnez-vous à 1000fr. <br /> </p>
+                 
+                Mettez toutes les chances de votre coté avant les Examens.
+                       
                     <p class="mt-2 text-gray-600">
-                        Nous sommes votre compagnons pour valider le bac. et comme bonus
-
+                        Regardez les sujets qui ont retenus notre attention et que nous traiterons avec vous:
                     </p>
                     <div class="grid gap-6 mt-8 sm:grid-cols-2">
                     <div class="flex items-center space-x-6 text-gray-800">
@@ -56,7 +59,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M5 13l4 4L19 7"></path>
                             </svg>
-                            <span>Chaque jour, des nouveaux sujets de prépa des villes de la CI</span>
+                            <span>Sujet de Philo, Français + leurs corrigés détaillé</span>
                         </div>
                         <div class="flex items-center space-x-6 text-gray-800">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -64,7 +67,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M5 13l4 4L19 7"></path>
                             </svg>
-                            <span>Des Textes de prépa et comment repondre aux questions du prof</span>
+                           <span>Sujet de Histoire-Géo + le corrigé détaillé</span>
                         </div>
                         <div class="flex items-center space-x-6 text-gray-800">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -72,7 +75,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M5 13l4 4L19 7"></path>
                             </svg>
-                            <span>Des conseils pour éviter les petites erreurs</span>
+                            <span>Sujet de SVT + le corrigé détaillé</span>
                         </div>
                         <div class="flex items-center space-x-6 text-gray-800">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -80,7 +83,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M5 13l4 4L19 7"></path>
                             </svg>
-                            <span>Les prépa en Anglais, Allemand, Espagnol et même en  Français.</span>
+                            <span>Sujet de Physique-chimie + le corrigé détaillé</span>
                         </div>
                         
                         <!-- 
@@ -112,101 +115,24 @@
         </div>
     </div>
     <div class="container px-6 mx-auto">
-        <h3 class="text-gray-800 ">Rejoignez nous</h3>
+        <h3 class="text-gray-800 ">Vous etes a un part pour accéder aux sujets dans votre espace personnel</h3>
         <div class="flex items-center space-x-6 py-6">
             <%= link_to new_user_registration_path, class:"flex items-center px-6 py-2 font-medium tracking-wide text-white bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:bg-red-500" do %>
                 <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                 Inscription Elève
+                 Je m'inscris
             <% end %>
-            <%= link_to new_user_session_path, class:"flex items-center px-4 py-2 font-medium tracking-wide text-white capitalize bg-blue-600 rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500" do %>
+            <%= link_to new_user_session_path, class:"flex items-center px-4 py-2 font-medium tracking-wide text-white  bg-blue-600 rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500" do %>
                 <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
                 </svg>
-                Se Connectez
+                Je me connecte
             <% end %>
             
         </div>
     </div>
-    
-    <div class="container px-6 py-10 mx-auto md:py-16">
-        <div class="flex flex-col space-y-6 md:flex-row md:items-center md:space-x-6">
-            <div class="flex items-center justify-center w-full md:w-1/2">
-                <%= image_tag('small_success.png', alt:"le bac en joie", class:"w-full h-full max-w-2xl rounded") %>
-            </div>
-            <div class="w-full md:w-1/2">
-                <div class="max-w-md mx-auto">
-                    <h1 class="text-2xl font-medium tracking-wide text-gray-800 md:text-4xl">
-                        Ensemble vers le BAC
-                    </h1>
-                    <p class="mt-5 leading-7 text-gray-600">
-                       Nous savons tous que le BAC n'est pas facile, C'est pour cette raison que les sujets d'oral vont être traités sur la plateforme.
-                    </p>
-                    <div class="grid gap-6 mt-8 sm:grid-cols-2">
-                        <div class="flex items-center space-x-6 text-gray-800">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            <span>Des sujets de renforcements</span>
-                        </div>
-                        <div class="flex items-center space-x-6 text-gray-800">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            <span>Des conseils pour bien se préparer</span>
-                        </div>
-                        <div class="flex items-center space-x-6 text-gray-800">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            <span>Des echanges entre groupes</span>
-                        </div>
-                        <div class="flex items-center space-x-6 text-gray-800">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            <span>Des Professeurs disponibles pour vous repondre</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="max-w-6xl px-6 py-10 mx-auto">
-        <h1 class="text-2xl font-medium tracking-wide text-center text-gray-800 md:text-4xl">
-            Devenir Professeur Partenaire
-        </h1>
-        <p class="mt-2 text-center text-gray-600">
-            les professeurs partenaires bénéficient d'une rémunération.
-        </p>
-        <div class="flex flex-col mt-6 space-y-5 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-5">
-            
-        <%= link_to accounted_teachers_path, class:"flex items-center px-6 py-2 font-medium tracking-wide text-white bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:bg-red-500" do %>
-                        <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        Inscription Prof Partnaire
-        <% end %>
-            <%= link_to accounted_superprofs_path, class:"flex items-center px-4 py-2 font-medium tracking-wide text-white capitalize bg-blue-600 rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500" do %>
-            
-                <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
-                </svg>
-                Inscription SuperProf Part
-             <% end %>
-        </div>
-        <%= render "homes/shared/partners_terms" %>
-        
-        
+  
     </div>
     <footer class="bg-gray-100">
         <div class="container flex flex-col items-center justify-between px-6 py-3 mx-auto sm:flex-row">
