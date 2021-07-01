@@ -5,20 +5,24 @@
     <!-- meta view/ responsive devise-->
     <meta name="viewport" content="width=device-width,initial-scale=1">
     
-    <%= render "layouts/shared/google_analytics" %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <!-- analytics script-->
+    <%= render "layouts/shared/google_analytics" %>
+
+    <!-- turbolinks script-->
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <!-- tailwind css-->
     <%= stylesheet_pack_tag "application", "data-turbo-track": "reload" %>
-
+    <!-- tailwind css-->
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <!-- AlpineJS -->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
-    
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
 
+    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet" />
     <!-- FLAVICON -->

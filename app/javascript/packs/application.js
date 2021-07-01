@@ -8,20 +8,22 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-Rails.start()
-Turbolinks.start()
-ActiveStorage.start()
-
 // images
  const images = require.context('../images', true)
  const imagePath = (name) => images(name, true)
 
-import "stylesheets/application"
+ import "js/read.js"
+import "stylesheets/application.scss"
 global.toastr = require("toastr")
-
 
 // require jquery
 //= require jquery
 
 require("trix")
 require("@rails/actiontext")
+
+Rails.start()
+Turbolinks.start()
+ActiveStorage.start()
+
+

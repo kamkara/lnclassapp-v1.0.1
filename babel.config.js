@@ -47,6 +47,7 @@ module.exports = function(api) {
           loose: true
         }
       ],
+
       [
         '@babel/plugin-proposal-object-rest-spread',
         {
@@ -56,9 +57,18 @@ module.exports = function(api) {
       [
         '@babel/plugin-transform-runtime',
         {
-          helpers: false
+          helpers: false,
+          regenerator: true,
+          corejs: false
         }
       ],
+      [
+        '@babel/plugin-proposal-object-rest-spread',
+        {
+          useBuiltIns: true
+        }
+      ],
+      
       [
         '@babel/plugin-transform-regenerator',
         {
